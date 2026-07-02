@@ -1666,6 +1666,16 @@
       "channel": 7,
       "note": 113,
       "description": "PAD 2 (DECK1) KEY SHIFT MODE - press - Set pitch to one semitone up"
+    },
+    "crossfader": {
+      "type": "cc",
+      "channel": 6,
+      "cc": 31,
+      "range": [
+        0,
+        127
+      ],
+      "description": "Crossfader (verificado con learn_map)"
     }
   }
 }
