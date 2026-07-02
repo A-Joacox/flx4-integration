@@ -33,13 +33,13 @@ Aplicación híbrida (Python + C++) que se conecta al controlador MIDI Numark/De
 
 ## Fase 0 — Setup del entorno (1-2 días)
 
-- [ ] Instalar Python 3.11+ y crear entorno virtual (`venv`)
-- [ ] Instalar dependencias Python: `mido`, `python-rtmidi`, `pyaudiowpatch`, `numpy`, `python-osc`
-- [ ] Verificar que el FLX4 aparece como dispositivo MIDI: `python midi/check_midi.py`
-- [ ] Verificar captura WASAPI loopback: `python audio/check_loopback.py`
-- [ ] Instalar Visual Studio 2022 Build Tools (workload "Desktop development with C++")
-- [ ] Instalar CMake y vcpkg; integrar vcpkg (`vcpkg integrate install`)
-- [ ] Compilar el esqueleto de `render/` (ventana GLFW vacía)
+- [x] Instalar Python 3.11+ y crear entorno virtual (`venv`)
+- [x] Instalar dependencias Python: `mido`, `python-rtmidi`, `pyaudiowpatch`, `numpy`, `python-osc`
+- [x] Verificar que el FLX4 aparece como dispositivo MIDI: `python midi/check_midi.py`
+- [x] Verificar captura WASAPI loopback: `python audio/check_loopback.py`
+- [x] Instalar Visual Studio 2022 Build Tools (workload "Desktop development with C++")
+- [x] Instalar CMake y vcpkg; integrar vcpkg (`vcpkg integrate install`)
+- [x] Compilar el esqueleto de `render/` (ventana GLFW vacía)
 - [x] Crear repo Git con estructura
 
 ## Fase 1 — Captura MIDI aislada (2-3 días)
@@ -52,7 +52,16 @@ Aplicación híbrida (Python + C++) que se conecta al controlador MIDI Numark/De
 
 ## Fase 2 — Captura y análisis de audio (3-4 días)
 
+> **Decisión verificada (Fase 0)**: rekordbox toma el FLX4 en modo exclusivo aunque
+> use el driver "DDJ-FLX4 WASAPI" — su loopback no se puede abrir con rekordbox
+> corriendo. Pipeline definitivo: activar **PC MASTER OUT** en rekordbox
+> (Preferencias → Audio), que duplica el master hacia los parlantes de la notebook,
+> y capturar el loopback de los parlantes Realtek. Verificado funcionando.
+> Implicancia: el volumen de Windows de los parlantes afecta la señal capturada —
+> normalizar o fijar volumen en Fase 2.
+
 - [ ] WASAPI loopback con buffer pequeño (512-1024 samples)
+- [ ] Selección de dispositivo por nombre (no por índice, cambia entre sesiones): preferir loopback de parlantes, no del FLX4
 - [ ] FFT en tiempo real con `numpy.fft.rfft`
 - [ ] 3 bandas de energía (bass/mid/treble)
 - [ ] Detector de beat: energía actual vs. media móvil con umbral adaptativo
@@ -86,21 +95,4 @@ Aplicación híbrida (Python + C++) que se conecta al controlador MIDI Numark/De
 
 - [ ] Presets en JSON (mapeos, paletas, tipo de fractal)
 - [ ] Transiciones suaves entre presets
-- [ ] Grabación a video vía `ffmpeg` (pipe desde framebuffer)
-- [ ] Reconexión automática FLX4, fallback de dispositivo de audio
-
-## Consideraciones de rendimiento
-
-- Pipeline completo en <16ms para 60fps sin lag perceptible
-- Audio analyzer en hilo propio con prioridad alta (`SetThreadPriority` vía `ctypes` si hay jitter)
-- Evaluar shared memory sobre OSC si la latencia UDP local es perceptible
-
-## Timeline
-
-~3-4 semanas part-time (una fase cada 2-5 días)
-
-## Notas
-
-- Priorizar `pyaudiowpatch`; validarlo temprano (es el punto más frágil en Windows)
-- vcpkg en modo manifest (`vcpkg.json`) para reproducibilidad
-- Cada fase deja un entregable ejecutable antes de avanzar
+- [ ] Grabación a video vía 
