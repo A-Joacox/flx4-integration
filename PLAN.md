@@ -44,9 +44,9 @@ Aplicación híbrida (Python + C++) que se conecta al controlador MIDI Numark/De
 
 ## Fase 1 — Captura MIDI aislada (2-3 días)
 
-- [ ] Script que escuche el FLX4 y loguee todos los mensajes CC/nota en crudo
-- [ ] Documentar mapeo CC→control en `presets/midi_map.json`
-- [ ] Normalizar valores (0-127 → 0.0-1.0)
+- [x] Script que escuche el FLX4 y loguee todos los mensajes CC/nota en crudo
+- [x] Documentar mapeo CC→control en `presets/midi_map.json`
+- [x] Normalizar valores (0-127 → 0.0-1.0)
 - [ ] Manejar el jog wheel (relative CC o pitch bend — confirmar comportamiento real)
 - **Entregable**: consola imprimiendo valores normalizados en tiempo real
 
