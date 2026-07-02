@@ -1,1681 +1,1681 @@
 {
-  "device_name_contains": "FLX4",
-  "source": "Mixxx Pioneer-DDJ-FLX4.midi.xml (github.com/mixxxdj/mixxx)",
-  "note": "Generado automaticamente (fuente truncada al final: pueden faltar algunos pads +SHIFT). Verificar/completar con midi/learn_map.py. Tempo sliders y algunos knobs mandan MSB+LSB (14 bits): aca figura el MSB.",
-  "controls": {
-    "browse_rotate_scroll_tracklist_tree_view": {
-      "type": "cc",
-      "channel": 6,
-      "cc": 64,
-      "range": [
-        0,
-        127
-      ],
-      "description": "BROWSE - rotate - Scroll tracklist/tree view"
-    },
-    "browse_shift_zoom_waveform": {
-      "type": "cc",
-      "channel": 6,
-      "cc": 100,
-      "range": [
-        0,
-        127
-      ],
-      "description": "BROWSE +SHIFT - Zoom waveform"
-    },
-    "browse_press_move_cursor_between_track_list_and_tree_view": {
-      "type": "note",
-      "channel": 6,
-      "note": 65,
-      "description": "BROWSE - press - Move cursor between track list and tree view"
-    },
-    "browse_shift_press_move_cursor_between_track_list_and_tree_view": {
-      "type": "note",
-      "channel": 6,
-      "note": 66,
-      "description": "BROWSE +SHIFT - press - Move cursor between track list and tree view"
-    },
-    "load_deck1_press_load_a_track_into_deck_1": {
-      "type": "note",
-      "channel": 6,
-      "note": 70,
-      "description": "LOAD (DECK1) - press - Load a Track into Deck 1"
-    },
-    "load_deck2_press_load_a_track_into_deck_2": {
-      "type": "note",
-      "channel": 6,
-      "note": 71,
-      "description": "LOAD (DECK2) - press - Load a Track into Deck 2"
-    },
-    "shift_deck1": {
-      "type": "note",
-      "channel": 0,
-      "note": 63,
-      "description": "Shift (DECK1)"
-    },
-    "shift_deck2": {
-      "type": "note",
-      "channel": 1,
-      "note": 63,
-      "description": "Shift (DECK2)"
-    },
-    "play_pause_deck1_press_play_pause": {
-      "type": "note",
-      "channel": 0,
-      "note": 11,
-      "description": "PLAY/PAUSE (DECK1) - press - Play/Pause"
-    },
-    "play_pause_shift_deck1_press_reverse_playback_in_slip_mode_while_held_censor": {
-      "type": "note",
-      "channel": 0,
-      "note": 14,
-      "description": "PLAY/PAUSE +SHIFT (DECK1) - press - Reverse playback in Slip Mode while held (Censor)"
-    },
-    "play_pause_deck2_press_play_pause": {
-      "type": "note",
-      "channel": 1,
-      "note": 11,
-      "description": "PLAY/PAUSE (DECK2) - press - Play/Pause"
-    },
-    "play_pause_shift_deck2_press_reverse_playback_in_slip_mode_while_held_censor": {
-      "type": "note",
-      "channel": 1,
-      "note": 14,
-      "description": "PLAY/PAUSE +SHIFT (DECK2) - press - Reverse playback in Slip Mode while held (Censor)"
-    },
-    "cue_deck1_press_set_call_cue_back_cue": {
-      "type": "note",
-      "channel": 0,
-      "note": 12,
-      "description": "CUE (DECK1) - press - Set/Call Cue, Back Cue"
-    },
-    "cue_shift_deck1_press_jump_to_track_start": {
-      "type": "note",
-      "channel": 0,
-      "note": 72,
-      "description": "CUE +SHIFT (DECK1) - press - Jump to track start"
-    },
-    "cue_deck2_press_set_call_cue_back_cue": {
-      "type": "note",
-      "channel": 1,
-      "note": 12,
-      "description": "CUE (DECK2) - press - Set/Call Cue, Back Cue"
-    },
-    "cue_shift_deck2_press_jump_to_track_start": {
-      "type": "note",
-      "channel": 1,
-      "note": 72,
-      "description": "CUE +SHIFT (DECK2) - press - Jump to track start"
-    },
-    "jog_dial_platter_vinyl_mode_on_deck1_rotate_scratch": {
-      "type": "cc_relative",
-      "channel": 0,
-      "cc": 34,
-      "description": "JOG DIAL PLATTER Vinyl mode On (DECK1) - rotate - Scratch"
-    },
-    "jog_dial_platter_vinyl_mode_off_deck1_rotate_pitch_bend": {
-      "type": "cc_relative",
-      "channel": 0,
-      "cc": 35,
-      "description": "JOG DIAL PLATTER Vinyl mode Off (DECK1) - rotate - Pitch bend"
-    },
-    "jog_dial_platter_shift_deck1_rotate_search_fast_pitch_bend": {
-      "type": "cc_relative",
-      "channel": 0,
-      "cc": 41,
-      "description": "JOG DIAL PLATTER +SHIFT (DECK1) - rotate - Search (Fast Pitch bend)"
-    },
-    "jog_dial_platter_deck1_touch_enable_on_touch_disable_on_release_scratching_pitch_bend": {
-      "type": "note",
-      "channel": 0,
-      "note": 54,
-      "description": "JOG DIAL PLATTER (DECK1) - touch - enable (on touch) / disable (on release) Scratching/Pitch\n                    bend"
-    },
-    "jog_dial_platter_shift_deck1_touch_enable_on_touch_disable_on_release_highspeed_pitch_bend": {
-      "type": "note",
-      "channel": 0,
-      "note": 103,
-      "description": "JOG DIAL PLATTER +SHIFT (DECK1) - touch - enable (on touch) / disable (on release) highspeed\n                    Pitch bend"
-    },
-    "jog_dial_side_deck1_rotate_pitch_bend": {
-      "type": "cc_relative",
-      "channel": 0,
-      "cc": 33,
-      "description": "JOG DIAL SIDE (DECK1) - rotate - Pitch bend"
-    },
-    "jog_dial_platter_vinyl_mode_on_deck2_rotate_scratch": {
-      "type": "cc_relative",
-      "channel": 1,
-      "cc": 34,
-      "description": "JOG DIAL PLATTER Vinyl mode On (DECK2) - rotate - Scratch"
-    },
-    "jog_dial_platter_vinyl_mode_off_deck2_rotate_pitch_bend": {
-      "type": "cc_relative",
-      "channel": 1,
-      "cc": 35,
-      "description": "JOG DIAL PLATTER Vinyl mode Off (DECK2) - rotate - Pitch bend"
-    },
-    "jog_dial_platter_shift_deck2_rotate_search_fast_pitch_bend": {
-      "type": "cc_relative",
-      "channel": 1,
-      "cc": 41,
-      "description": "JOG DIAL PLATTER +SHIFT (DECK2) - rotate - Search (Fast Pitch bend)"
-    },
-    "jog_dial_platter_deck2_touch_enable_on_touch_disable_on_release_scratching_pitch_bend": {
-      "type": "note",
-      "channel": 1,
-      "note": 54,
-      "description": "JOG DIAL PLATTER (DECK2) - touch - enable (on touch) / disable (on release) Scratching/Pitch\n                    bend"
-    },
-    "jog_dial_platter_shift_deck2_touch_enable_on_touch_disable_on_release_highspeed_pitch_bend": {
-      "type": "note",
-      "channel": 1,
-      "note": 103,
-      "description": "JOG DIAL PLATTER +SHIFT (DECK2) - touch - enable (on touch) / disable (on release) highspeed\n                    Pitch bend"
-    },
-    "jog_dial_side_deck2_rotate_pitch_bend": {
-      "type": "cc_relative",
-      "channel": 1,
-      "cc": 33,
-      "description": "JOG DIAL SIDE (DECK2) - rotate - Pitch bend"
-    },
-    "tempo_deck1_fader_tempo_control_lsb": {
-      "type": "cc",
-      "channel": 0,
-      "cc": 32,
-      "range": [
-        0,
-        127
-      ],
-      "description": "TEMPO (DECK1) - fader - Tempo control LSB"
-    },
-    "tempo_deck1_fader_tempo_control_msb": {
-      "type": "cc",
-      "channel": 0,
-      "cc": 0,
-      "range": [
-        0,
-        127
-      ],
-      "description": "TEMPO (DECK1) - fader - Tempo control MSB"
-    },
-    "tempo_deck2_fader_tempo_control_lsb": {
-      "type": "cc",
-      "channel": 1,
-      "cc": 32,
-      "range": [
-        0,
-        127
-      ],
-      "description": "TEMPO (DECK2) - fader - Tempo control LSB"
-    },
-    "tempo_deck2_fader_tempo_control_msb": {
-      "type": "cc",
-      "channel": 1,
-      "cc": 0,
-      "range": [
-        0,
-        127
-      ],
-      "description": "TEMPO (DECK2) - fader - Tempo control MSB"
-    },
-    "beat_sync_deck1_press_beat_sync_to_master_deck": {
-      "type": "note",
-      "channel": 0,
-      "note": 88,
-      "description": "BEAT SYNC (DECK1) - press - Beat Sync to Master deck"
-    },
-    "beat_sync_long_press_deck1_press_set_as_master_deck": {
-      "type": "note",
-      "channel": 0,
-      "note": 92,
-      "description": "BEAT SYNC LONG PRESS (DECK1) - press - Set as Master deck"
-    },
-    "beat_sync_shift_deck1_press_change_tempo_range": {
-      "type": "note",
-      "channel": 0,
-      "note": 96,
-      "description": "BEAT SYNC +SHIFT (DECK1) - press - change Tempo range"
-    },
-    "beat_sync_deck2_press_beat_sync_to_master_deck": {
-      "type": "note",
-      "channel": 1,
-      "note": 88,
-      "description": "BEAT SYNC (DECK2) - press - Beat Sync to Master deck"
-    },
-    "beat_sync_long_press_deck2_press_set_as_master_deck": {
-      "type": "note",
-      "channel": 1,
-      "note": 92,
-      "description": "BEAT SYNC LONG PRESS (DECK2) - press - Set as Master deck"
-    },
-    "beat_sync_shift_deck2_press_change_tempo_range": {
-      "type": "note",
-      "channel": 1,
-      "note": 96,
-      "description": "BEAT SYNC +SHIFT (DECK2) - press - change Tempo range"
-    },
-    "loop_in_4_beat_deck1_press_set_loop_in": {
-      "type": "note",
-      "channel": 0,
-      "note": 16,
-      "description": "LOOP IN/4 BEAT (DECK1) - press - Set loop in"
-    },
-    "loop_in_4_beat_deck2_press_set_loop_in": {
-      "type": "note",
-      "channel": 1,
-      "note": 16,
-      "description": "LOOP IN/4 BEAT (DECK2) - press - Set loop in"
-    },
-    "loop_out_deck1_press_set_loop_out": {
-      "type": "note",
-      "channel": 0,
-      "note": 17,
-      "description": "LOOP OUT (DECK1) - press - Set loop out"
-    },
-    "loop_out_deck2_press_set_loop_out": {
-      "type": "note",
-      "channel": 1,
-      "note": 17,
-      "description": "LOOP OUT (DECK2) - press - Set loop out"
-    },
-    "reloop_exit_deck1_press_loop_off_reloop_loop_on_loop_exit": {
-      "type": "note",
-      "channel": 0,
-      "note": 77,
-      "description": "RELOOP/EXIT (DECK1) - press - (loop off) Reloop, (loop on) Loop exit"
-    },
-    "reloop_exit_deck2_press_loop_off_reloop_loop_on_loop_exit": {
-      "type": "note",
-      "channel": 1,
-      "note": 77,
-      "description": "RELOOP/EXIT (DECK2) - press - (loop off) Reloop, (loop on) Loop exit"
-    },
-    "reloop_exit_shift_deck1_press_reloop_and_stop": {
-      "type": "note",
-      "channel": 0,
-      "note": 80,
-      "description": "RELOOP/EXIT +SHIFT (DECK1) - press - Reloop and stop"
-    },
-    "reloop_exit_shift_deck2_press_reloop_and_stop": {
-      "type": "note",
-      "channel": 1,
-      "note": 80,
-      "description": "RELOOP/EXIT +SHIFT (DECK2) - press - Reloop and stop"
-    },
-    "shift_loop_in_deck1_loop_in_adjust_using_jog_wheel": {
-      "type": "note",
-      "channel": 0,
-      "note": 76,
-      "description": "SHIFT + LOOP IN (DECK1) - Loop in adjust (using jog wheel)"
-    },
-    "shift_loop_in_deck2_loop_in_adjust_using_jog_wheel": {
-      "type": "note",
-      "channel": 1,
-      "note": 76,
-      "description": "SHIFT + LOOP IN (DECK2) - Loop in adjust (using jog wheel)"
-    },
-    "shift_loop_out_deck1_loop_out_adjust_using_jog_wheel": {
-      "type": "note",
-      "channel": 0,
-      "note": 78,
-      "description": "SHIFT + LOOP OUT (DECK1) - Loop out adjust (using jog wheel)"
-    },
-    "shift_loop_out_deck2_loop_out_adjust_using_jog_wheel": {
-      "type": "note",
-      "channel": 1,
-      "note": 78,
-      "description": "SHIFT + LOOP OUT (DECK2) - Loop out adjust (using jog wheel)"
-    },
-    "cue_loop_call_left_deck1_press_half_active_loop": {
-      "type": "note",
-      "channel": 0,
-      "note": 81,
-      "description": "CUE/LOOP CALL LEFT (DECK1) - press - half active loop"
-    },
-    "cue_loop_call_left_shift_deck1_press_quick_jump_back": {
-      "type": "note",
-      "channel": 0,
-      "note": 62,
-      "description": "CUE/LOOP CALL LEFT + SHIFT (DECK1) - press - quick jump back"
-    },
-    "cue_loop_call_left_deck2_press_half_active_loop": {
-      "type": "note",
-      "channel": 1,
-      "note": 81,
-      "description": "CUE/LOOP CALL LEFT (DECK2) - press - half active loop"
-    },
-    "cue_loop_call_left_shift_deck2_press_quick_jump_back": {
-      "type": "note",
-      "channel": 1,
-      "note": 62,
-      "description": "CUE/LOOP CALL LEFT + SHIFT (DECK2) - press - quick jump back"
-    },
-    "cue_loop_call_left_deck1_press_double_active_loop": {
-      "type": "note",
-      "channel": 0,
-      "note": 83,
-      "description": "CUE/LOOP CALL LEFT (DECK1) - press - double active loop"
-    },
-    "cue_loop_call_right_shift_deck1_press_quick_jump_forwards": {
-      "type": "note",
-      "channel": 0,
-      "note": 61,
-      "description": "CUE/LOOP CALL RIGHT + SHIFT (DECK1) - press - quick jump forwards"
-    },
-    "cue_loop_call_left_deck2_press_double_active_loop": {
-      "type": "note",
-      "channel": 1,
-      "note": 83,
-      "description": "CUE/LOOP CALL LEFT (DECK2) - press - double active loop"
-    },
-    "cue_loop_call_right_shift_deck2_press_quick_jump_forwards": {
-      "type": "note",
-      "channel": 1,
-      "note": 61,
-      "description": "CUE/LOOP CALL RIGHT + SHIFT (DECK2) - press - quick jump forwards"
-    },
-    "crossfader_slider": {
-      "type": "cc",
-      "channel": 6,
-      "cc": 31,
-      "range": [
-        0,
-        127
-      ],
-      "description": "CROSSFADER - slider"
-    },
-    "crossfader_slider_2": {
-      "type": "cc",
-      "channel": 6,
-      "cc": 63,
-      "range": [
-        0,
-        127
-      ],
-      "description": "CROSSFADER - slider"
-    },
-    "channelfader_slider": {
-      "type": "cc",
-      "channel": 0,
-      "cc": 51,
-      "range": [
-        0,
-        127
-      ],
-      "description": "CHANNELFADER - slider"
-    },
-    "channelfader_slider_2": {
-      "type": "cc",
-      "channel": 0,
-      "cc": 19,
-      "range": [
-        0,
-        127
-      ],
-      "description": "CHANNELFADER - slider"
-    },
-    "channelfader_slider_3": {
-      "type": "cc",
-      "channel": 1,
-      "cc": 51,
-      "range": [
-        0,
-        127
-      ],
-      "description": "CHANNELFADER - slider"
-    },
-    "channelfader_slider_4": {
-      "type": "cc",
-      "channel": 1,
-      "cc": 19,
-      "range": [
-        0,
-        127
-      ],
-      "description": "CHANNELFADER - slider"
-    },
-    "shift_left_cue_toggle_quantize_on_off_deck1": {
-      "type": "note",
-      "channel": 0,
-      "note": 104,
-      "description": "Shift + Left CUE - Toggle quantize on/off (Deck1)"
-    },
-    "shift_right_cue_toggle_quantize_on_off_deck2": {
-      "type": "note",
-      "channel": 1,
-      "note": 104,
-      "description": "Shift + Right CUE - Toggle quantize on/off (Deck2)"
-    },
-    "trim_rotate": {
-      "type": "cc",
-      "channel": 0,
-      "cc": 36,
-      "range": [
-        0,
-        127
-      ],
-      "description": "TRIM - rotate"
-    },
-    "trim_rotate_2": {
-      "type": "cc",
-      "channel": 0,
-      "cc": 4,
-      "range": [
-        0,
-        127
-      ],
-      "description": "TRIM - rotate"
-    },
-    "trim_rotate_3": {
-      "type": "cc",
-      "channel": 1,
-      "cc": 36,
-      "range": [
-        0,
-        127
-      ],
-      "description": "TRIM - rotate"
-    },
-    "trim_rotate_4": {
-      "type": "cc",
-      "channel": 1,
-      "cc": 4,
-      "range": [
-        0,
-        127
-      ],
-      "description": "TRIM - rotate"
-    },
-    "eq_hi_rotate": {
-      "type": "cc",
-      "channel": 0,
-      "cc": 39,
-      "range": [
-        0,
-        127
-      ],
-      "description": "EQ HI - rotate"
-    },
-    "eq_mid_rotate": {
-      "type": "cc",
-      "channel": 0,
-      "cc": 43,
-      "range": [
-        0,
-        127
-      ],
-      "description": "EQ MID - rotate"
-    },
-    "eq_low_rotate": {
-      "type": "cc",
-      "channel": 0,
-      "cc": 47,
-      "range": [
-        0,
-        127
-      ],
-      "description": "EQ LOW - rotate"
-    },
-    "eq_hi_rotate_2": {
-      "type": "cc",
-      "channel": 0,
-      "cc": 7,
-      "range": [
-        0,
-        127
-      ],
-      "description": "EQ HI - rotate"
-    },
-    "eq_mid_rotate_2": {
-      "type": "cc",
-      "channel": 0,
-      "cc": 11,
-      "range": [
-        0,
-        127
-      ],
-      "description": "EQ MID - rotate"
-    },
-    "eq_low_rotate_2": {
-      "type": "cc",
-      "channel": 0,
-      "cc": 15,
-      "range": [
-        0,
-        127
-      ],
-      "description": "EQ LOW - rotate"
-    },
-    "eq_hi_rotate_3": {
-      "type": "cc",
-      "channel": 1,
-      "cc": 39,
-      "range": [
-        0,
-        127
-      ],
-      "description": "EQ HI - rotate"
-    },
-    "eq_mid_rotate_3": {
-      "type": "cc",
-      "channel": 1,
-      "cc": 43,
-      "range": [
-        0,
-        127
-      ],
-      "description": "EQ MID - rotate"
-    },
-    "eq_low_rotate_3": {
-      "type": "cc",
-      "channel": 1,
-      "cc": 47,
-      "range": [
-        0,
-        127
-      ],
-      "description": "EQ LOW - rotate"
-    },
-    "eq_hi_rotate_4": {
-      "type": "cc",
-      "channel": 1,
-      "cc": 7,
-      "range": [
-        0,
-        127
-      ],
-      "description": "EQ HI - rotate"
-    },
-    "eq_mid_rotate_4": {
-      "type": "cc",
-      "channel": 1,
-      "cc": 11,
-      "range": [
-        0,
-        127
-      ],
-      "description": "EQ MID - rotate"
-    },
-    "eq_low_rotate_4": {
-      "type": "cc",
-      "channel": 1,
-      "cc": 15,
-      "range": [
-        0,
-        127
-      ],
-      "description": "EQ LOW - rotate"
-    },
-    "cue_channel_press_toggle_headphone_cue": {
-      "type": "note",
-      "channel": 0,
-      "note": 84,
-      "description": "CUE Channel - press - toggle Headphone Cue"
-    },
-    "cue_channel_press_toggle_headphone_cue_2": {
-      "type": "note",
-      "channel": 1,
-      "note": 84,
-      "description": "CUE Channel - press - toggle Headphone Cue"
-    },
-    "headphones_mixing_rotate_monitor_balance": {
-      "type": "cc",
-      "channel": 6,
-      "cc": 44,
-      "range": [
-        0,
-        127
-      ],
-      "description": "HEADPHONES MIXING - rotate - Monitor Balance"
-    },
-    "headphones_mixing_rotate_monitor_balance_2": {
-      "type": "cc",
-      "channel": 6,
-      "cc": 12,
-      "range": [
-        0,
-        127
-      ],
-      "description": "HEADPHONES MIXING - rotate - Monitor Balance"
-    },
-    "filter_ch1_rotate_filter_effect_knob": {
-      "type": "cc",
-      "channel": 6,
-      "cc": 23,
-      "range": [
-        0,
-        127
-      ],
-      "description": "FILTER CH1 - rotate - Filter Effect Knob"
-    },
-    "filter_ch1_rotate_filter_effect_knob_2": {
-      "type": "cc",
-      "channel": 6,
-      "cc": 55,
-      "range": [
-        0,
-        127
-      ],
-      "description": "FILTER CH1 - rotate - Filter Effect Knob"
-    },
-    "filter_ch2_rotate_filter_effect_knob": {
-      "type": "cc",
-      "channel": 6,
-      "cc": 24,
-      "range": [
-        0,
-        127
-      ],
-      "description": "FILTER CH2 - rotate - Filter Effect Knob"
-    },
-    "filter_ch2_rotate_filter_effect_knob_2": {
-      "type": "cc",
-      "channel": 6,
-      "cc": 56,
-      "range": [
-        0,
-        127
-      ],
-      "description": "FILTER CH2 - rotate - Filter Effect Knob"
-    },
-    "beat_fx_select_press_once_select_next_effect": {
-      "type": "note",
-      "channel": 4,
-      "note": 99,
-      "description": "BEAT FX SELECT - press once - select next effect"
-    },
-    "beat_fx_select_shift_press_once_select_previous_effect": {
-      "type": "note",
-      "channel": 4,
-      "note": 100,
-      "description": "BEAT FX SELECT + shift - press once - select previous effect"
-    },
-    "beat_left_press_select_previous_effect_unit": {
-      "type": "note",
-      "channel": 4,
-      "note": 74,
-      "description": "BEAT LEFT - press - select previous effect unit"
-    },
-    "beat_right_press_select_next_effect_unit": {
-      "type": "note",
-      "channel": 4,
-      "note": 75,
-      "description": "BEAT RIGHT - press - select next effect unit"
-    },
-    "beat_fx_ch_select_ch1_slide_select_fx_on_deck_1": {
-      "type": "note",
-      "channel": 4,
-      "note": 16,
-      "description": "BEAT FX CH SELECT CH1 - slide - Select FX on DECK 1"
-    },
-    "beat_fx_ch_select_ch2_slide_select_fx_on_deck_2": {
-      "type": "note",
-      "channel": 5,
-      "note": 17,
-      "description": "BEAT FX CH SELECT CH2 - slide - Select FX on DECK 2"
-    },
-    "beat_fx_level_depth_rotate_msb_adjust_fx_level_mix_and_beat_fx_depth_meta_in_the_selected_slot": {
-      "type": "cc",
-      "channel": 4,
-      "cc": 2,
-      "range": [
-        0,
-        127
-      ],
-      "description": "BEAT FX LEVEL/DEPTH - rotate (MSB) - Adjust FX Level (mix) and BEAT FX Depth (meta) in the\n                    selected slot"
-    },
-    "beat_fx_on_off_press_toggle_fx_in_the_selected_slot_when_on_chan1_1_2": {
-      "type": "note",
-      "channel": 4,
-      "note": 71,
-      "description": "BEAT FX ON/OFF - press - Toggle FX in the selected Slot (when on CHAN1/1+2)"
-    },
-    "beat_fx_on_off_press_toggle_fx_in_the_selected_slot_when_on_chan2": {
-      "type": "note",
-      "channel": 5,
-      "note": 71,
-      "description": "BEAT FX ON/OFF - press - Toggle FX in the selected Slot (when on CHAN2)"
-    },
-    "beat_fx_on_off_shift_press_disable_all_enabled_beat_fx_slots_when_on_chan1_1_2": {
-      "type": "note",
-      "channel": 4,
-      "note": 67,
-      "description": "BEAT FX ON/OFF +SHIFT - press - Disable all enabled Beat FX Slots (when on CHAN1/1+2)"
-    },
-    "beat_fx_on_off_shift_press_disable_all_enabled_beat_fx_slots_when_on_chan12": {
-      "type": "note",
-      "channel": 5,
-      "note": 67,
-      "description": "BEAT FX ON/OFF +SHIFT - press - Disable all enabled Beat FX Slots (when on CHAN12)"
-    },
-    "hot_cue_mode_deck1_press_set_hotcue_mode": {
-      "type": "note",
-      "channel": 0,
-      "note": 27,
-      "description": "HOT CUE MODE (DECK1) - press - set hotcue mode"
-    },
-    "hot_cue_mode_deck2_press_set_hotcue_mode": {
-      "type": "note",
-      "channel": 1,
-      "note": 27,
-      "description": "HOT CUE MODE (DECK2) - press - set hotcue mode"
-    },
-    "keyboard_mode_deck1_press_set_keyboard_mode": {
-      "type": "note",
-      "channel": 0,
-      "note": 105,
-      "description": "KEYBOARD MODE (DECK1) - press - set keyboard mode"
-    },
-    "keyboard_mode_deck2_press_set_keyboard_mode": {
-      "type": "note",
-      "channel": 1,
-      "note": 105,
-      "description": "KEYBOARD MODE (DECK2) - press - set keyboard mode"
-    },
-    "pad_fx1_mode_deck1_press_set_pad_fx1_mode": {
-      "type": "note",
-      "channel": 0,
-      "note": 30,
-      "description": "PAD FX1 MODE (DECK1) - press - set pad fx1 mode"
-    },
-    "pad_fx1_mode_deck2_press_set_pad_fx1_mode": {
-      "type": "note",
-      "channel": 1,
-      "note": 30,
-      "description": "PAD FX1 MODE (DECK2) - press - set pad fx1 mode"
-    },
-    "pad_fx2_mode_deck1_press_set_pad_fx2_mode": {
-      "type": "note",
-      "channel": 0,
-      "note": 107,
-      "description": "PAD FX2 MODE (DECK1) - press - set pad fx2 mode"
-    },
-    "pad_fx2_mode_deck2_press_set_pad_fx2_mode": {
-      "type": "note",
-      "channel": 1,
-      "note": 107,
-      "description": "PAD FX2 MODE (DECK2) - press - set pad fx2 mode"
-    },
-    "beat_jump_mode_deck1_press_set_beat_jump_mode": {
-      "type": "note",
-      "channel": 0,
-      "note": 32,
-      "description": "BEAT JUMP MODE (DECK1) - press - set beat jump mode"
-    },
-    "beat_jump_mode_deck2_press_set_beat_jump_mode": {
-      "type": "note",
-      "channel": 1,
-      "note": 32,
-      "description": "BEAT JUMP MODE (DECK2) - press - set beat jump mode"
-    },
-    "beat_loop_mode_deck1_press_set_beat_loop_mode": {
-      "type": "note",
-      "channel": 0,
-      "note": 109,
-      "description": "BEAT LOOP MODE (DECK1) - press - set beat loop mode"
-    },
-    "beat_loop_mode_deck2_press_set_beat_loop_mode": {
-      "type": "note",
-      "channel": 1,
-      "note": 109,
-      "description": "BEAT LOOP MODE (DECK2) - press - set beat loop mode"
-    },
-    "sampler_mode_deck1_press_set_sampler_mode": {
-      "type": "note",
-      "channel": 0,
-      "note": 34,
-      "description": "SAMPLER MODE (DECK1) - press - set sampler mode"
-    },
-    "sampler_mode_deck2_press_set_sampler_mode": {
-      "type": "note",
-      "channel": 1,
-      "note": 34,
-      "description": "SAMPLER MODE (DECK2) - press - set sampler mode"
-    },
-    "key_shift_mode_deck1_press_set_key_shift_mode": {
-      "type": "note",
-      "channel": 0,
-      "note": 111,
-      "description": "KEY SHIFT MODE (DECK1) - press - set key shift mode"
-    },
-    "key_shift_mode_deck2_press_set_key_shift_mode": {
-      "type": "note",
-      "channel": 1,
-      "note": 111,
-      "description": "KEY SHIFT MODE (DECK2) - press - set key shift mode"
-    },
-    "pad_1_deck1_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 7,
-      "note": 0,
-      "description": "PAD 1 (DECK1) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_1_shift_deck1_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 8,
-      "note": 0,
-      "description": "PAD 1 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_1_deck2_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 9,
-      "note": 0,
-      "description": "PAD 1 (DECK2) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_1_shift_deck2_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 10,
-      "note": 0,
-      "description": "PAD 1 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_2_deck1_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 7,
-      "note": 1,
-      "description": "PAD 2 (DECK1) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_2_shift_deck1_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 8,
-      "note": 1,
-      "description": "PAD 2 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_2_deck2_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 9,
-      "note": 1,
-      "description": "PAD 2 (DECK2) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_2_shift_deck2_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 10,
-      "note": 1,
-      "description": "PAD 2 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_3_deck1_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 7,
-      "note": 2,
-      "description": "PAD 3 (DECK1) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_3_shift_deck1_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 8,
-      "note": 2,
-      "description": "PAD 3 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_3_deck2_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 9,
-      "note": 2,
-      "description": "PAD 3 (DECK2) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_3_shift_deck2_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 10,
-      "note": 2,
-      "description": "PAD 3 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_4_deck1_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 7,
-      "note": 3,
-      "description": "PAD 4 (DECK1) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_4_shift_deck1_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 8,
-      "note": 3,
-      "description": "PAD 4 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_4_deck2_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 9,
-      "note": 3,
-      "description": "PAD 4 (DECK2) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_4_shift_deck2_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 10,
-      "note": 3,
-      "description": "PAD 4 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_5_deck1_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 7,
-      "note": 4,
-      "description": "PAD 5(DECK1) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_5_shift_deck1_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 8,
-      "note": 4,
-      "description": "PAD 5 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_5_deck2_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 9,
-      "note": 4,
-      "description": "PAD 5 (DECK2) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_5_shift_deck2_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 10,
-      "note": 4,
-      "description": "PAD 5 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_6_deck1_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 7,
-      "note": 5,
-      "description": "PAD 6 (DECK1) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_6_shift_deck1_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 8,
-      "note": 5,
-      "description": "PAD 6 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_6_deck2_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 9,
-      "note": 5,
-      "description": "PAD 6 (DECK2) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_6_shift_deck2_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 10,
-      "note": 5,
-      "description": "PAD 6 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_7_deck1_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 7,
-      "note": 6,
-      "description": "PAD 7 (DECK1) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_7_shift_deck1_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 8,
-      "note": 6,
-      "description": "PAD 7 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_7_deck2_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 9,
-      "note": 6,
-      "description": "PAD 7 (DECK2) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_7_shift_deck2_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 10,
-      "note": 6,
-      "description": "PAD 7 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_8_deck1_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 7,
-      "note": 7,
-      "description": "PAD 8 (DECK1) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_8_shift_deck1_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 8,
-      "note": 7,
-      "description": "PAD 8 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_8_deck2_hot_cue_mode_press_set_hotcue": {
-      "type": "note",
-      "channel": 9,
-      "note": 7,
-      "description": "PAD 8 (DECK2) HOT CUE MODE - press - set hotcue"
-    },
-    "pad_8_shift_deck2_hot_cue_mode_press_delete_hotcue": {
-      "type": "note",
-      "channel": 10,
-      "note": 7,
-      "description": "PAD 8 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
-    },
-    "pad_1_deck1_keyboard_mode_press_toggle_stem_1": {
-      "type": "note",
-      "channel": 7,
-      "note": 64,
-      "description": "PAD 1 (DECK1) KEYBOARD MODE - press - Toggle Stem 1"
-    },
-    "pad_1_shift_deck1_keyboard_mode_press_only_stem_1_active": {
-      "type": "note",
-      "channel": 8,
-      "note": 64,
-      "description": "PAD 1 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 1 active"
-    },
-    "pad_1_deck2_keyboard_mode_press_toggle_stem_1": {
-      "type": "note",
-      "channel": 9,
-      "note": 64,
-      "description": "PAD 1 (DECK2) KEYBOARD MODE - press - Toggle Stem 1"
-    },
-    "pad_1_shift_deck2_keyboard_mode_press_only_stem_1_active": {
-      "type": "note",
-      "channel": 10,
-      "note": 64,
-      "description": "PAD 1 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 1 active"
-    },
-    "pad_2_deck1_keyboard_mode_press_toggle_stem_2": {
-      "type": "note",
-      "channel": 7,
-      "note": 65,
-      "description": "PAD 2 (DECK1) KEYBOARD MODE - press - Toggle Stem 2"
-    },
-    "pad_2_shift_deck1_keyboard_mode_press_only_stem_2_active": {
-      "type": "note",
-      "channel": 8,
-      "note": 65,
-      "description": "PAD 2 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 2 active"
-    },
-    "pad_2_deck2_keyboard_mode_press_toggle_stem_2": {
-      "type": "note",
-      "channel": 9,
-      "note": 65,
-      "description": "PAD 2 (DECK2) KEYBOARD MODE - press - Toggle Stem 2"
-    },
-    "pad_2_shift_deck2_keyboard_mode_press_only_stem_2_active": {
-      "type": "note",
-      "channel": 10,
-      "note": 65,
-      "description": "PAD 2 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 2 active"
-    },
-    "pad_3_deck1_keyboard_mode_press_toggle_stem_3": {
-      "type": "note",
-      "channel": 7,
-      "note": 66,
-      "description": "PAD 3 (DECK1) KEYBOARD MODE - press - Toggle Stem 3"
-    },
-    "pad_3_shift_deck1_keyboard_mode_press_only_stem_3_active": {
-      "type": "note",
-      "channel": 8,
-      "note": 66,
-      "description": "PAD 3 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 3 active"
-    },
-    "pad_3_deck2_keyboard_mode_press_toggle_stem_3": {
-      "type": "note",
-      "channel": 9,
-      "note": 66,
-      "description": "PAD 3 (DECK2) KEYBOARD MODE - press - Toggle Stem 3"
-    },
-    "pad_3_shift_deck2_keyboard_mode_press_only_stem_3_active": {
-      "type": "note",
-      "channel": 10,
-      "note": 66,
-      "description": "PAD 3 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 3 active"
-    },
-    "pad_4_deck1_keyboard_mode_press_toggle_stem_4": {
-      "type": "note",
-      "channel": 7,
-      "note": 67,
-      "description": "PAD 4 (DECK1) KEYBOARD MODE - press - Toggle Stem 4"
-    },
-    "pad_4_shift_deck1_keyboard_mode_press_only_stem_4_active": {
-      "type": "note",
-      "channel": 8,
-      "note": 67,
-      "description": "PAD 4 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 4 active"
-    },
-    "pad_4_deck2_keyboard_mode_press_toggle_stem_4": {
-      "type": "note",
-      "channel": 9,
-      "note": 67,
-      "description": "PAD 4 (DECK2) KEYBOARD MODE - press - Toggle Stem 4"
-    },
-    "pad_4_shift_deck2_keyboard_mode_press_only_stem_4_active": {
-      "type": "note",
-      "channel": 10,
-      "note": 67,
-      "description": "PAD 4 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 4 active"
-    },
-    "pad_5_deck1_keyboard_mode_press_toggle_stem_1_fx": {
-      "type": "note",
-      "channel": 7,
-      "note": 68,
-      "description": "PAD 5 (DECK1) KEYBOARD MODE - press - Toggle Stem 1 FX"
-    },
-    "pad_5_shift_deck1_keyboard_mode_press_only_stem_1_fx_active": {
-      "type": "note",
-      "channel": 8,
-      "note": 68,
-      "description": "PAD 5 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 1 FX active"
-    },
-    "pad_5_deck2_keyboard_mode_press_toggle_stem_1_fx": {
-      "type": "note",
-      "channel": 9,
-      "note": 68,
-      "description": "PAD 5 (DECK2) KEYBOARD MODE - press - Toggle Stem 1 FX"
-    },
-    "pad_5_shift_deck2_keyboard_mode_press_only_stem_1_fx_active": {
-      "type": "note",
-      "channel": 10,
-      "note": 68,
-      "description": "PAD 5 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 1 FX active"
-    },
-    "pad_6_deck1_keyboard_mode_press_toggle_stem_2_fx": {
-      "type": "note",
-      "channel": 7,
-      "note": 69,
-      "description": "PAD 6 (DECK1) KEYBOARD MODE - press - Toggle Stem 2 FX"
-    },
-    "pad_6_shift_deck1_keyboard_mode_press_only_stem_2_fx_active": {
-      "type": "note",
-      "channel": 8,
-      "note": 69,
-      "description": "PAD 6 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 2 FX active"
-    },
-    "pad_6_deck2_keyboard_mode_press_toggle_stem_2_fx": {
-      "type": "note",
-      "channel": 9,
-      "note": 69,
-      "description": "PAD 6 (DECK2) KEYBOARD MODE - press - Toggle Stem 2 FX"
-    },
-    "pad_6_shift_deck2_keyboard_mode_press_only_stem_2_fx_active": {
-      "type": "note",
-      "channel": 10,
-      "note": 69,
-      "description": "PAD 6 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 2 FX active"
-    },
-    "pad_7_deck1_keyboard_mode_press_toggle_stem_3_fx": {
-      "type": "note",
-      "channel": 7,
-      "note": 70,
-      "description": "PAD 7 (DECK1) KEYBOARD MODE - press - Toggle Stem 3 FX"
-    },
-    "pad_7_shift_deck1_keyboard_mode_press_only_stem_3_fx_active": {
-      "type": "note",
-      "channel": 8,
-      "note": 70,
-      "description": "PAD 7 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 3 FX active"
-    },
-    "pad_7_deck2_keyboard_mode_press_toggle_stem_3_fx": {
-      "type": "note",
-      "channel": 9,
-      "note": 70,
-      "description": "PAD 7 (DECK2) KEYBOARD MODE - press - Toggle Stem 3 FX"
-    },
-    "pad_7_shift_deck2_keyboard_mode_press_only_stem_3_fx_active": {
-      "type": "note",
-      "channel": 10,
-      "note": 70,
-      "description": "PAD 7 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 3 FX active"
-    },
-    "pad_8_deck1_keyboard_mode_press_toggle_stem_4_fx": {
-      "type": "note",
-      "channel": 7,
-      "note": 71,
-      "description": "PAD 8 (DECK1) KEYBOARD MODE - press - Toggle Stem 4 FX"
-    },
-    "pad_8_shift_deck1_keyboard_mode_press_only_stem_4_fx_active": {
-      "type": "note",
-      "channel": 8,
-      "note": 71,
-      "description": "PAD 8 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 4 FX active"
-    },
-    "pad_8_deck2_keyboard_mode_press_toggle_stem_4_fx": {
-      "type": "note",
-      "channel": 9,
-      "note": 71,
-      "description": "PAD 8 (DECK2) KEYBOARD MODE - press - Toggle Stem 4 FX"
-    },
-    "pad_8_shift_deck2_keyboard_mode_press_only_stem_4_fx_active": {
-      "type": "note",
-      "channel": 10,
-      "note": 71,
-      "description": "PAD 8 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 4 FX active"
-    },
-    "pad_1_deck1_beat_loop_mode_press_1_4_beatloop": {
-      "type": "note",
-      "channel": 7,
-      "note": 96,
-      "description": "PAD 1 (DECK1) BEAT LOOP MODE - press - 1/4 Beatloop"
-    },
-    "pad_1_deck2_beat_loop_mode_press_1_4_beatloop": {
-      "type": "note",
-      "channel": 9,
-      "note": 96,
-      "description": "PAD 1 (DECK2) BEAT LOOP MODE - press - 1/4 Beatloop"
-    },
-    "pad_2_deck1_beat_loop_mode_press_1_2_beatloop": {
-      "type": "note",
-      "channel": 7,
-      "note": 97,
-      "description": "PAD 2 (DECK1) BEAT LOOP MODE - press - 1/2 Beatloop"
-    },
-    "pad_2_deck2_beat_loop_mode_press_1_2_beatloop": {
-      "type": "note",
-      "channel": 9,
-      "note": 97,
-      "description": "PAD 2 (DECK2) BEAT LOOP MODE - press - 1/2 Beatloop"
-    },
-    "pad_3_deck1_beat_loop_mode_press_1_1_beatloop": {
-      "type": "note",
-      "channel": 7,
-      "note": 98,
-      "description": "PAD 3 (DECK1) BEAT LOOP MODE - press - 1/1 Beatloop"
-    },
-    "pad_3_deck2_beat_loop_mode_press_1_1_beatloop": {
-      "type": "note",
-      "channel": 9,
-      "note": 98,
-      "description": "PAD 3 (DECK2) BEAT LOOP MODE - press - 1/1 Beatloop"
-    },
-    "pad_4_deck1_beat_loop_mode_press_2_beatloop": {
-      "type": "note",
-      "channel": 7,
-      "note": 99,
-      "description": "PAD 4 (DECK1) BEAT LOOP MODE - press - 2 Beatloop"
-    },
-    "pad_4_deck2_beat_loop_mode_press_2_beatloop": {
-      "type": "note",
-      "channel": 9,
-      "note": 99,
-      "description": "PAD 4 (DECK2) BEAT LOOP MODE - press - 2 Beatloop"
-    },
-    "pad_5_deck1_beat_loop_mode_press_4_beatloop": {
-      "type": "note",
-      "channel": 7,
-      "note": 100,
-      "description": "PAD 5 (DECK1) BEAT LOOP MODE - press - 4 Beatloop"
-    },
-    "pad_5_deck2_beat_loop_mode_press_4_beatloop": {
-      "type": "note",
-      "channel": 9,
-      "note": 100,
-      "description": "PAD 5 (DECK2) BEAT LOOP MODE - press - 4 Beatloop"
-    },
-    "pad_6_deck1_beat_loop_mode_press_8_beatloop": {
-      "type": "note",
-      "channel": 7,
-      "note": 101,
-      "description": "PAD 6 (DECK1) BEAT LOOP MODE - press - 8 Beatloop"
-    },
-    "pad_6_deck2_beat_loop_mode_press_8_beatloop": {
-      "type": "note",
-      "channel": 9,
-      "note": 101,
-      "description": "PAD 6 (DECK2) BEAT LOOP MODE - press - 8 Beatloop"
-    },
-    "pad_7_deck1_beat_loop_mode_press_16_beatloop": {
-      "type": "note",
-      "channel": 7,
-      "note": 102,
-      "description": "PAD 7 (DECK1) BEAT LOOP MODE - press - 16 Beatloop"
-    },
-    "pad_7_deck2_beat_loop_mode_press_16_beatloop": {
-      "type": "note",
-      "channel": 9,
-      "note": 102,
-      "description": "PAD 7 (DECK2) BEAT LOOP MODE - press - 16 Beatloop"
-    },
-    "pad_8_deck1_beat_loop_mode_press_32_beatloop": {
-      "type": "note",
-      "channel": 7,
-      "note": 103,
-      "description": "PAD 8 (DECK1) BEAT LOOP MODE - press - 32 Beatloop"
-    },
-    "pad_8_deck2_beat_loop_mode_press_32_beatloop": {
-      "type": "note",
-      "channel": 9,
-      "note": 103,
-      "description": "PAD 8 (DECK2) BEAT LOOP MODE - press - 32 Beatloop"
-    },
-    "pad_1_deck1_beat_jump_mode_press_jump_1_beat_backwards": {
-      "type": "note",
-      "channel": 7,
-      "note": 32,
-      "description": "PAD 1 (DECK1) BEAT JUMP MODE - press - Jump 1 Beat backwards"
-    },
-    "pad_1_deck2_beat_jump_mode_press_jump_1_beat_backwards": {
-      "type": "note",
-      "channel": 9,
-      "note": 32,
-      "description": "PAD 1 (DECK2) BEAT JUMP MODE - press - Jump 1 Beat backwards"
-    },
-    "pad_2_deck1_beat_jump_mode_press_jump_1_beat_forwards": {
-      "type": "note",
-      "channel": 7,
-      "note": 33,
-      "description": "PAD 2 (DECK1) BEAT JUMP MODE - press - Jump 1 Beat forwards"
-    },
-    "pad_2_deck2_beat_jump_mode_press_jump_1_beat_forwards": {
-      "type": "note",
-      "channel": 9,
-      "note": 33,
-      "description": "PAD 2 (DECK2) BEAT JUMP MODE - press - Jump 1 Beat forwards"
-    },
-    "pad_3_deck1_beat_jump_mode_press_jump_2_beats_backwards": {
-      "type": "note",
-      "channel": 7,
-      "note": 34,
-      "description": "PAD 3 (DECK1) BEAT JUMP MODE - press - Jump 2 Beats backwards"
-    },
-    "pad_3_deck2_beat_jump_mode_press_jump_2_beats_backwards": {
-      "type": "note",
-      "channel": 9,
-      "note": 34,
-      "description": "PAD 3 (DECK2) BEAT JUMP MODE - press - Jump 2 Beats backwards"
-    },
-    "pad_4_deck1_beat_jump_mode_press_jump_2_beats_forwards": {
-      "type": "note",
-      "channel": 7,
-      "note": 35,
-      "description": "PAD 4 (DECK1) BEAT JUMP MODE - press - Jump 2 Beats forwards"
-    },
-    "pad_4_deck2_beat_jump_mode_press_jump_2_beats_forwards": {
-      "type": "note",
-      "channel": 9,
-      "note": 35,
-      "description": "PAD 4 (DECK2) BEAT JUMP MODE - press - Jump 2 Beats forwards"
-    },
-    "pad_5_deck1_beat_jump_mode_press_jump_4_beats_backwards": {
-      "type": "note",
-      "channel": 7,
-      "note": 36,
-      "description": "PAD 5 (DECK1) BEAT JUMP MODE - press - Jump 4 Beats backwards"
-    },
-    "pad_5_deck2_beat_jump_mode_press_jump_4_beats_backwards": {
-      "type": "note",
-      "channel": 9,
-      "note": 36,
-      "description": "PAD 5 (DECK2) BEAT JUMP MODE - press - Jump 4 Beats backwards"
-    },
-    "pad_6_deck1_beat_jump_mode_press_jump_4_beats_forwards": {
-      "type": "note",
-      "channel": 7,
-      "note": 37,
-      "description": "PAD 6 (DECK1) BEAT JUMP MODE - press - Jump 4 Beats forwards"
-    },
-    "pad_6_deck2_beat_jump_mode_press_jump_4_beats_forwards": {
-      "type": "note",
-      "channel": 9,
-      "note": 37,
-      "description": "PAD 6 (DECK2) BEAT JUMP MODE - press - Jump 4 Beats forwards"
-    },
-    "pad_7_deck1_beat_jump_mode_press_jump_8_beats_backwards": {
-      "type": "note",
-      "channel": 7,
-      "note": 38,
-      "description": "PAD 7 (DECK1) BEAT JUMP MODE - press - Jump 8 Beats backwards"
-    },
-    "pad_7_deck2_beat_jump_mode_press_jump_8_beats_backwards": {
-      "type": "note",
-      "channel": 9,
-      "note": 38,
-      "description": "PAD 7 (DECK2) BEAT JUMP MODE - press - Jump 8 Beats backwards"
-    },
-    "pad_8_deck1_beat_jump_mode_press_jump_8_beats_forwards": {
-      "type": "note",
-      "channel": 7,
-      "note": 39,
-      "description": "PAD 8 (DECK1) BEAT JUMP MODE - press - Jump 8 Beats forwards"
-    },
-    "pad_8_deck2_beat_jump_mode_press_jump_8_beats_forwards": {
-      "type": "note",
-      "channel": 9,
-      "note": 39,
-      "description": "PAD 8 (DECK2) BEAT JUMP MODE - press - Jump 8 Beats forwards"
-    },
-    "pad_7_deck1_shift_beat_jump_mode_press_decrease_beatjump_by_a_factor_of_16": {
-      "type": "note",
-      "channel": 8,
-      "note": 38,
-      "description": "PAD 7 (DECK1) +SHift BEAT JUMP MODE - press - decrease Beatjump by a factor of 16"
-    },
-    "pad_7_deck2_shift_beat_jump_mode_press_decrease_beatjump_by_a_factor_of_16": {
-      "type": "note",
-      "channel": 10,
-      "note": 38,
-      "description": "PAD 7 (DECK2) +Shift BEAT JUMP MODE - press - decrease Beatjump by a factor of 16"
-    },
-    "pad_8_deck1_shift_beat_jump_mode_press_increase_beatjump_by_a_factor_of_16": {
-      "type": "note",
-      "channel": 8,
-      "note": 39,
-      "description": "PAD 8 (DECK1) +SHift BEAT JUMP MODE - press - increase Beatjump by a factor of 16"
-    },
-    "pad_8_deck2_shift_beat_jump_mode_press_increase_beatjump_by_a_factor_of_16": {
-      "type": "note",
-      "channel": 10,
-      "note": 39,
-      "description": "PAD 8 (DECK2) +Shift BEAT JUMP MODE - press - increase Beatjump by a factor of 16"
-    },
-    "pad_1_left_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 7,
-      "note": 48,
-      "description": "PAD 1 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_1_left_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 8,
-      "note": 48,
-      "description": "PAD 1 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_2_left_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 7,
-      "note": 49,
-      "description": "PAD 2 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_2_left_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 8,
-      "note": 49,
-      "description": "PAD 2 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_3_left_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 7,
-      "note": 50,
-      "description": "PAD 3 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_3_left_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 8,
-      "note": 50,
-      "description": "PAD 3 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_4_left_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 7,
-      "note": 51,
-      "description": "PAD 4 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_4_left_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 8,
-      "note": 51,
-      "description": "PAD 4 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_5_left_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 7,
-      "note": 52,
-      "description": "PAD 5 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_5_left_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 8,
-      "note": 52,
-      "description": "PAD 5 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_6_left_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 7,
-      "note": 53,
-      "description": "PAD 6 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_6_left_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 8,
-      "note": 53,
-      "description": "PAD 6 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_7_left_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 7,
-      "note": 54,
-      "description": "PAD 7 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_7_left_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 8,
-      "note": 54,
-      "description": "PAD 7 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_8_left_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 7,
-      "note": 55,
-      "description": "PAD 8 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_8_left_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 8,
-      "note": 55,
-      "description": "PAD 8 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_1_right_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 9,
-      "note": 48,
-      "description": "PAD 1 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_1_right_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 10,
-      "note": 48,
-      "description": "PAD 1 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_2_right_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 9,
-      "note": 49,
-      "description": "PAD 2 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_2_right_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 10,
-      "note": 49,
-      "description": "PAD 2 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_3_right_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 9,
-      "note": 50,
-      "description": "PAD 3 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_3_right_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 10,
-      "note": 50,
-      "description": "PAD 3 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_4_right_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 9,
-      "note": 51,
-      "description": "PAD 4 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_4_right_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 10,
-      "note": 51,
-      "description": "PAD 4 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_5_right_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 9,
-      "note": 52,
-      "description": "PAD 5 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_5_right_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 10,
-      "note": 52,
-      "description": "PAD 5 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_6_right_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 9,
-      "note": 53,
-      "description": "PAD 6 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_6_right_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 10,
-      "note": 53,
-      "description": "PAD 6 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_7_right_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 9,
-      "note": 54,
-      "description": "PAD 7 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_7_right_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 10,
-      "note": 54,
-      "description": "PAD 7 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_8_right_sample_mode_press_play_sample_or_load_track": {
-      "type": "note",
-      "channel": 9,
-      "note": 55,
-      "description": "PAD 8 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
-    },
-    "pad_8_right_shift_sample_mode_press_stop_playback_or_eject_track": {
-      "type": "note",
-      "channel": 10,
-      "note": 55,
-      "description": "PAD 8 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
-    },
-    "pad_1_deck1_key_shift_mode_press_no_pitch_modification": {
-      "type": "note",
-      "channel": 7,
-      "note": 112,
-      "description": "PAD 1 (DECK1) KEY SHIFT MODE - press - No pitch modification"
-    },
-    "pad_1_shift_deck1_key_shift_mode_press_increase_the_pitch_by_1_semitone": {
-      "type": "note",
-      "channel": 8,
-      "note": 112,
-      "description": "PAD 1 +SHIFT (DECK1) KEY SHIFT MODE - press - Increase the pitch by 1 semitone"
-    },
-    "pad_1_deck2_key_shift_mode_press_no_pitch_modification": {
-      "type": "note",
-      "channel": 9,
-      "note": 112,
-      "description": "PAD 1 (DECK2) KEY SHIFT MODE - press - No pitch modification"
-    },
-    "pad_1_shift_deck2_key_shift_mode_press_increase_the_pitch_by_1_semitone": {
-      "type": "note",
-      "channel": 10,
-      "note": 112,
-      "description": "PAD 1 +SHIFT (DECK2) KEY SHIFT MODE - press - Increase the pitch by 1 semitone"
-    },
-    "pad_2_deck1_key_shift_mode_press_set_pitch_to_one_semitone_up": {
-      "type": "note",
-      "channel": 7,
-      "note": 113,
-      "description": "PAD 2 (DECK1) KEY SHIFT MODE - press - Set pitch to one semitone up"
-    },
-    "crossfader": {
-      "type": "cc",
-      "channel": 6,
-      "cc": 31,
-      "range": [
-        0,
-        127
-      ],
-      "description": "Crossfader (verificado con learn_map)"
-    }
+ "device_name_contains": "FLX4",
+ "source": "Mixxx Pioneer-DDJ-FLX4.midi.xml (github.com/mixxxdj/mixxx)",
+ "note": "Regenerable con midi/gen_map_from_mixxx.py. Tempo sliders y algunos knobs mandan MSB+LSB (14 bits): aca figura el MSB.",
+ "controls": {
+  "browse_rotate_scroll_tracklist_tree_view": {
+   "type": "cc",
+   "channel": 6,
+   "cc": 64,
+   "range": [
+    0,
+    127
+   ],
+   "description": "BROWSE - rotate - Scroll tracklist/tree view"
+  },
+  "browse_shift_zoom_waveform": {
+   "type": "cc",
+   "channel": 6,
+   "cc": 100,
+   "range": [
+    0,
+    127
+   ],
+   "description": "BROWSE +SHIFT - Zoom waveform"
+  },
+  "browse_press_move_cursor_between_track_list_and_tree_view": {
+   "type": "note",
+   "channel": 6,
+   "note": 65,
+   "description": "BROWSE - press - Move cursor between track list and tree view"
+  },
+  "browse_shift_press_move_cursor_between_track_list_and_tree_view": {
+   "type": "note",
+   "channel": 6,
+   "note": 66,
+   "description": "BROWSE +SHIFT - press - Move cursor between track list and tree view"
+  },
+  "load_deck1_press_load_a_track_into_deck_1": {
+   "type": "note",
+   "channel": 6,
+   "note": 70,
+   "description": "LOAD (DECK1) - press - Load a Track into Deck 1"
+  },
+  "load_deck2_press_load_a_track_into_deck_2": {
+   "type": "note",
+   "channel": 6,
+   "note": 71,
+   "description": "LOAD (DECK2) - press - Load a Track into Deck 2"
+  },
+  "shift_deck1": {
+   "type": "note",
+   "channel": 0,
+   "note": 63,
+   "description": "Shift (DECK1)"
+  },
+  "shift_deck2": {
+   "type": "note",
+   "channel": 1,
+   "note": 63,
+   "description": "Shift (DECK2)"
+  },
+  "play_pause_deck1_press_play_pause": {
+   "type": "note",
+   "channel": 0,
+   "note": 11,
+   "description": "PLAY/PAUSE (DECK1) - press - Play/Pause"
+  },
+  "play_pause_shift_deck1_press_reverse_playback_in_slip_mode_while_held_censor": {
+   "type": "note",
+   "channel": 0,
+   "note": 14,
+   "description": "PLAY/PAUSE +SHIFT (DECK1) - press - Reverse playback in Slip Mode while held (Censor)"
+  },
+  "play_pause_deck2_press_play_pause": {
+   "type": "note",
+   "channel": 1,
+   "note": 11,
+   "description": "PLAY/PAUSE (DECK2) - press - Play/Pause"
+  },
+  "play_pause_shift_deck2_press_reverse_playback_in_slip_mode_while_held_censor": {
+   "type": "note",
+   "channel": 1,
+   "note": 14,
+   "description": "PLAY/PAUSE +SHIFT (DECK2) - press - Reverse playback in Slip Mode while held (Censor)"
+  },
+  "cue_deck1_press_set_call_cue_back_cue": {
+   "type": "note",
+   "channel": 0,
+   "note": 12,
+   "description": "CUE (DECK1) - press - Set/Call Cue, Back Cue"
+  },
+  "cue_shift_deck1_press_jump_to_track_start": {
+   "type": "note",
+   "channel": 0,
+   "note": 72,
+   "description": "CUE +SHIFT (DECK1) - press - Jump to track start"
+  },
+  "cue_deck2_press_set_call_cue_back_cue": {
+   "type": "note",
+   "channel": 1,
+   "note": 12,
+   "description": "CUE (DECK2) - press - Set/Call Cue, Back Cue"
+  },
+  "cue_shift_deck2_press_jump_to_track_start": {
+   "type": "note",
+   "channel": 1,
+   "note": 72,
+   "description": "CUE +SHIFT (DECK2) - press - Jump to track start"
+  },
+  "jog_dial_platter_vinyl_mode_on_deck1_rotate_scratch": {
+   "type": "cc_relative",
+   "channel": 0,
+   "cc": 34,
+   "description": "JOG DIAL PLATTER Vinyl mode On (DECK1) - rotate - Scratch"
+  },
+  "jog_dial_platter_vinyl_mode_off_deck1_rotate_pitch_bend": {
+   "type": "cc_relative",
+   "channel": 0,
+   "cc": 35,
+   "description": "JOG DIAL PLATTER Vinyl mode Off (DECK1) - rotate - Pitch bend"
+  },
+  "jog_dial_platter_shift_deck1_rotate_search_fast_pitch_bend": {
+   "type": "cc_relative",
+   "channel": 0,
+   "cc": 41,
+   "description": "JOG DIAL PLATTER +SHIFT (DECK1) - rotate - Search (Fast Pitch bend)"
+  },
+  "jog_dial_platter_deck1_touch_enable_on_touch_disable_on_release_scratching_pitch_bend": {
+   "type": "note",
+   "channel": 0,
+   "note": 54,
+   "description": "JOG DIAL PLATTER (DECK1) - touch - enable (on touch) / disable (on release) Scratching/Pitch\n                    bend"
+  },
+  "jog_dial_platter_shift_deck1_touch_enable_on_touch_disable_on_release_highspeed_pitch_bend": {
+   "type": "note",
+   "channel": 0,
+   "note": 103,
+   "description": "JOG DIAL PLATTER +SHIFT (DECK1) - touch - enable (on touch) / disable (on release) highspeed\n                    Pitch bend"
+  },
+  "jog_dial_side_deck1_rotate_pitch_bend": {
+   "type": "cc_relative",
+   "channel": 0,
+   "cc": 33,
+   "description": "JOG DIAL SIDE (DECK1) - rotate - Pitch bend"
+  },
+  "jog_dial_platter_vinyl_mode_on_deck2_rotate_scratch": {
+   "type": "cc_relative",
+   "channel": 1,
+   "cc": 34,
+   "description": "JOG DIAL PLATTER Vinyl mode On (DECK2) - rotate - Scratch"
+  },
+  "jog_dial_platter_vinyl_mode_off_deck2_rotate_pitch_bend": {
+   "type": "cc_relative",
+   "channel": 1,
+   "cc": 35,
+   "description": "JOG DIAL PLATTER Vinyl mode Off (DECK2) - rotate - Pitch bend"
+  },
+  "jog_dial_platter_shift_deck2_rotate_search_fast_pitch_bend": {
+   "type": "cc_relative",
+   "channel": 1,
+   "cc": 41,
+   "description": "JOG DIAL PLATTER +SHIFT (DECK2) - rotate - Search (Fast Pitch bend)"
+  },
+  "jog_dial_platter_deck2_touch_enable_on_touch_disable_on_release_scratching_pitch_bend": {
+   "type": "note",
+   "channel": 1,
+   "note": 54,
+   "description": "JOG DIAL PLATTER (DECK2) - touch - enable (on touch) / disable (on release) Scratching/Pitch\n                    bend"
+  },
+  "jog_dial_platter_shift_deck2_touch_enable_on_touch_disable_on_release_highspeed_pitch_bend": {
+   "type": "note",
+   "channel": 1,
+   "note": 103,
+   "description": "JOG DIAL PLATTER +SHIFT (DECK2) - touch - enable (on touch) / disable (on release) highspeed\n                    Pitch bend"
+  },
+  "jog_dial_side_deck2_rotate_pitch_bend": {
+   "type": "cc_relative",
+   "channel": 1,
+   "cc": 33,
+   "description": "JOG DIAL SIDE (DECK2) - rotate - Pitch bend"
+  },
+  "tempo_deck1_fader_tempo_control_lsb": {
+   "type": "cc",
+   "channel": 0,
+   "cc": 32,
+   "range": [
+    0,
+    127
+   ],
+   "description": "TEMPO (DECK1) - fader - Tempo control LSB"
+  },
+  "tempo_deck1_fader_tempo_control_msb": {
+   "type": "cc",
+   "channel": 0,
+   "cc": 0,
+   "range": [
+    0,
+    127
+   ],
+   "description": "TEMPO (DECK1) - fader - Tempo control MSB"
+  },
+  "tempo_deck2_fader_tempo_control_lsb": {
+   "type": "cc",
+   "channel": 1,
+   "cc": 32,
+   "range": [
+    0,
+    127
+   ],
+   "description": "TEMPO (DECK2) - fader - Tempo control LSB"
+  },
+  "tempo_deck2_fader_tempo_control_msb": {
+   "type": "cc",
+   "channel": 1,
+   "cc": 0,
+   "range": [
+    0,
+    127
+   ],
+   "description": "TEMPO (DECK2) - fader - Tempo control MSB"
+  },
+  "beat_sync_deck1_press_beat_sync_to_master_deck": {
+   "type": "note",
+   "channel": 0,
+   "note": 88,
+   "description": "BEAT SYNC (DECK1) - press - Beat Sync to Master deck"
+  },
+  "beat_sync_long_press_deck1_press_set_as_master_deck": {
+   "type": "note",
+   "channel": 0,
+   "note": 92,
+   "description": "BEAT SYNC LONG PRESS (DECK1) - press - Set as Master deck"
+  },
+  "beat_sync_shift_deck1_press_change_tempo_range": {
+   "type": "note",
+   "channel": 0,
+   "note": 96,
+   "description": "BEAT SYNC +SHIFT (DECK1) - press - change Tempo range"
+  },
+  "beat_sync_deck2_press_beat_sync_to_master_deck": {
+   "type": "note",
+   "channel": 1,
+   "note": 88,
+   "description": "BEAT SYNC (DECK2) - press - Beat Sync to Master deck"
+  },
+  "beat_sync_long_press_deck2_press_set_as_master_deck": {
+   "type": "note",
+   "channel": 1,
+   "note": 92,
+   "description": "BEAT SYNC LONG PRESS (DECK2) - press - Set as Master deck"
+  },
+  "beat_sync_shift_deck2_press_change_tempo_range": {
+   "type": "note",
+   "channel": 1,
+   "note": 96,
+   "description": "BEAT SYNC +SHIFT (DECK2) - press - change Tempo range"
+  },
+  "loop_in_4_beat_deck1_press_set_loop_in": {
+   "type": "note",
+   "channel": 0,
+   "note": 16,
+   "description": "LOOP IN/4 BEAT (DECK1) - press - Set loop in"
+  },
+  "loop_in_4_beat_deck2_press_set_loop_in": {
+   "type": "note",
+   "channel": 1,
+   "note": 16,
+   "description": "LOOP IN/4 BEAT (DECK2) - press - Set loop in"
+  },
+  "loop_out_deck1_press_set_loop_out": {
+   "type": "note",
+   "channel": 0,
+   "note": 17,
+   "description": "LOOP OUT (DECK1) - press - Set loop out"
+  },
+  "loop_out_deck2_press_set_loop_out": {
+   "type": "note",
+   "channel": 1,
+   "note": 17,
+   "description": "LOOP OUT (DECK2) - press - Set loop out"
+  },
+  "reloop_exit_deck1_press_loop_off_reloop_loop_on_loop_exit": {
+   "type": "note",
+   "channel": 0,
+   "note": 77,
+   "description": "RELOOP/EXIT (DECK1) - press - (loop off) Reloop, (loop on) Loop exit"
+  },
+  "reloop_exit_deck2_press_loop_off_reloop_loop_on_loop_exit": {
+   "type": "note",
+   "channel": 1,
+   "note": 77,
+   "description": "RELOOP/EXIT (DECK2) - press - (loop off) Reloop, (loop on) Loop exit"
+  },
+  "reloop_exit_shift_deck1_press_reloop_and_stop": {
+   "type": "note",
+   "channel": 0,
+   "note": 80,
+   "description": "RELOOP/EXIT +SHIFT (DECK1) - press - Reloop and stop"
+  },
+  "reloop_exit_shift_deck2_press_reloop_and_stop": {
+   "type": "note",
+   "channel": 1,
+   "note": 80,
+   "description": "RELOOP/EXIT +SHIFT (DECK2) - press - Reloop and stop"
+  },
+  "shift_loop_in_deck1_loop_in_adjust_using_jog_wheel": {
+   "type": "note",
+   "channel": 0,
+   "note": 76,
+   "description": "SHIFT + LOOP IN (DECK1) - Loop in adjust (using jog wheel)"
+  },
+  "shift_loop_in_deck2_loop_in_adjust_using_jog_wheel": {
+   "type": "note",
+   "channel": 1,
+   "note": 76,
+   "description": "SHIFT + LOOP IN (DECK2) - Loop in adjust (using jog wheel)"
+  },
+  "shift_loop_out_deck1_loop_out_adjust_using_jog_wheel": {
+   "type": "note",
+   "channel": 0,
+   "note": 78,
+   "description": "SHIFT + LOOP OUT (DECK1) - Loop out adjust (using jog wheel)"
+  },
+  "shift_loop_out_deck2_loop_out_adjust_using_jog_wheel": {
+   "type": "note",
+   "channel": 1,
+   "note": 78,
+   "description": "SHIFT + LOOP OUT (DECK2) - Loop out adjust (using jog wheel)"
+  },
+  "cue_loop_call_left_deck1_press_half_active_loop": {
+   "type": "note",
+   "channel": 0,
+   "note": 81,
+   "description": "CUE/LOOP CALL LEFT (DECK1) - press - half active loop"
+  },
+  "cue_loop_call_left_shift_deck1_press_quick_jump_back": {
+   "type": "note",
+   "channel": 0,
+   "note": 62,
+   "description": "CUE/LOOP CALL LEFT + SHIFT (DECK1) - press - quick jump back"
+  },
+  "cue_loop_call_left_deck2_press_half_active_loop": {
+   "type": "note",
+   "channel": 1,
+   "note": 81,
+   "description": "CUE/LOOP CALL LEFT (DECK2) - press - half active loop"
+  },
+  "cue_loop_call_left_shift_deck2_press_quick_jump_back": {
+   "type": "note",
+   "channel": 1,
+   "note": 62,
+   "description": "CUE/LOOP CALL LEFT + SHIFT (DECK2) - press - quick jump back"
+  },
+  "cue_loop_call_left_deck1_press_double_active_loop": {
+   "type": "note",
+   "channel": 0,
+   "note": 83,
+   "description": "CUE/LOOP CALL LEFT (DECK1) - press - double active loop"
+  },
+  "cue_loop_call_right_shift_deck1_press_quick_jump_forwards": {
+   "type": "note",
+   "channel": 0,
+   "note": 61,
+   "description": "CUE/LOOP CALL RIGHT + SHIFT (DECK1) - press - quick jump forwards"
+  },
+  "cue_loop_call_left_deck2_press_double_active_loop": {
+   "type": "note",
+   "channel": 1,
+   "note": 83,
+   "description": "CUE/LOOP CALL LEFT (DECK2) - press - double active loop"
+  },
+  "cue_loop_call_right_shift_deck2_press_quick_jump_forwards": {
+   "type": "note",
+   "channel": 1,
+   "note": 61,
+   "description": "CUE/LOOP CALL RIGHT + SHIFT (DECK2) - press - quick jump forwards"
+  },
+  "crossfader_slider": {
+   "type": "cc",
+   "channel": 6,
+   "cc": 31,
+   "range": [
+    0,
+    127
+   ],
+   "description": "CROSSFADER - slider"
+  },
+  "crossfader_slider_2": {
+   "type": "cc",
+   "channel": 6,
+   "cc": 63,
+   "range": [
+    0,
+    127
+   ],
+   "description": "CROSSFADER - slider"
+  },
+  "channelfader_slider": {
+   "type": "cc",
+   "channel": 0,
+   "cc": 51,
+   "range": [
+    0,
+    127
+   ],
+   "description": "CHANNELFADER - slider"
+  },
+  "channelfader_slider_2": {
+   "type": "cc",
+   "channel": 0,
+   "cc": 19,
+   "range": [
+    0,
+    127
+   ],
+   "description": "CHANNELFADER - slider"
+  },
+  "channelfader_slider_3": {
+   "type": "cc",
+   "channel": 1,
+   "cc": 51,
+   "range": [
+    0,
+    127
+   ],
+   "description": "CHANNELFADER - slider"
+  },
+  "channelfader_slider_4": {
+   "type": "cc",
+   "channel": 1,
+   "cc": 19,
+   "range": [
+    0,
+    127
+   ],
+   "description": "CHANNELFADER - slider"
+  },
+  "shift_left_cue_toggle_quantize_on_off_deck1": {
+   "type": "note",
+   "channel": 0,
+   "note": 104,
+   "description": "Shift + Left CUE - Toggle quantize on/off (Deck1)"
+  },
+  "shift_right_cue_toggle_quantize_on_off_deck2": {
+   "type": "note",
+   "channel": 1,
+   "note": 104,
+   "description": "Shift + Right CUE - Toggle quantize on/off (Deck2)"
+  },
+  "trim_rotate": {
+   "type": "cc",
+   "channel": 0,
+   "cc": 36,
+   "range": [
+    0,
+    127
+   ],
+   "description": "TRIM - rotate"
+  },
+  "trim_rotate_2": {
+   "type": "cc",
+   "channel": 0,
+   "cc": 4,
+   "range": [
+    0,
+    127
+   ],
+   "description": "TRIM - rotate"
+  },
+  "trim_rotate_3": {
+   "type": "cc",
+   "channel": 1,
+   "cc": 36,
+   "range": [
+    0,
+    127
+   ],
+   "description": "TRIM - rotate"
+  },
+  "trim_rotate_4": {
+   "type": "cc",
+   "channel": 1,
+   "cc": 4,
+   "range": [
+    0,
+    127
+   ],
+   "description": "TRIM - rotate"
+  },
+  "eq_hi_rotate": {
+   "type": "cc",
+   "channel": 0,
+   "cc": 39,
+   "range": [
+    0,
+    127
+   ],
+   "description": "EQ HI - rotate"
+  },
+  "eq_mid_rotate": {
+   "type": "cc",
+   "channel": 0,
+   "cc": 43,
+   "range": [
+    0,
+    127
+   ],
+   "description": "EQ MID - rotate"
+  },
+  "eq_low_rotate": {
+   "type": "cc",
+   "channel": 0,
+   "cc": 47,
+   "range": [
+    0,
+    127
+   ],
+   "description": "EQ LOW - rotate"
+  },
+  "eq_hi_rotate_2": {
+   "type": "cc",
+   "channel": 0,
+   "cc": 7,
+   "range": [
+    0,
+    127
+   ],
+   "description": "EQ HI - rotate"
+  },
+  "eq_mid_rotate_2": {
+   "type": "cc",
+   "channel": 0,
+   "cc": 11,
+   "range": [
+    0,
+    127
+   ],
+   "description": "EQ MID - rotate"
+  },
+  "eq_low_rotate_2": {
+   "type": "cc",
+   "channel": 0,
+   "cc": 15,
+   "range": [
+    0,
+    127
+   ],
+   "description": "EQ LOW - rotate"
+  },
+  "eq_hi_rotate_3": {
+   "type": "cc",
+   "channel": 1,
+   "cc": 39,
+   "range": [
+    0,
+    127
+   ],
+   "description": "EQ HI - rotate"
+  },
+  "eq_mid_rotate_3": {
+   "type": "cc",
+   "channel": 1,
+   "cc": 43,
+   "range": [
+    0,
+    127
+   ],
+   "description": "EQ MID - rotate"
+  },
+  "eq_low_rotate_3": {
+   "type": "cc",
+   "channel": 1,
+   "cc": 47,
+   "range": [
+    0,
+    127
+   ],
+   "description": "EQ LOW - rotate"
+  },
+  "eq_hi_rotate_4": {
+   "type": "cc",
+   "channel": 1,
+   "cc": 7,
+   "range": [
+    0,
+    127
+   ],
+   "description": "EQ HI - rotate"
+  },
+  "eq_mid_rotate_4": {
+   "type": "cc",
+   "channel": 1,
+   "cc": 11,
+   "range": [
+    0,
+    127
+   ],
+   "description": "EQ MID - rotate"
+  },
+  "eq_low_rotate_4": {
+   "type": "cc",
+   "channel": 1,
+   "cc": 15,
+   "range": [
+    0,
+    127
+   ],
+   "description": "EQ LOW - rotate"
+  },
+  "cue_channel_press_toggle_headphone_cue": {
+   "type": "note",
+   "channel": 0,
+   "note": 84,
+   "description": "CUE Channel - press - toggle Headphone Cue"
+  },
+  "cue_channel_press_toggle_headphone_cue_2": {
+   "type": "note",
+   "channel": 1,
+   "note": 84,
+   "description": "CUE Channel - press - toggle Headphone Cue"
+  },
+  "headphones_mixing_rotate_monitor_balance": {
+   "type": "cc",
+   "channel": 6,
+   "cc": 44,
+   "range": [
+    0,
+    127
+   ],
+   "description": "HEADPHONES MIXING - rotate - Monitor Balance"
+  },
+  "headphones_mixing_rotate_monitor_balance_2": {
+   "type": "cc",
+   "channel": 6,
+   "cc": 12,
+   "range": [
+    0,
+    127
+   ],
+   "description": "HEADPHONES MIXING - rotate - Monitor Balance"
+  },
+  "filter_ch1_rotate_filter_effect_knob": {
+   "type": "cc",
+   "channel": 6,
+   "cc": 23,
+   "range": [
+    0,
+    127
+   ],
+   "description": "FILTER CH1 - rotate - Filter Effect Knob"
+  },
+  "filter_ch1_rotate_filter_effect_knob_2": {
+   "type": "cc",
+   "channel": 6,
+   "cc": 55,
+   "range": [
+    0,
+    127
+   ],
+   "description": "FILTER CH1 - rotate - Filter Effect Knob"
+  },
+  "filter_ch2_rotate_filter_effect_knob": {
+   "type": "cc",
+   "channel": 6,
+   "cc": 24,
+   "range": [
+    0,
+    127
+   ],
+   "description": "FILTER CH2 - rotate - Filter Effect Knob"
+  },
+  "filter_ch2_rotate_filter_effect_knob_2": {
+   "type": "cc",
+   "channel": 6,
+   "cc": 56,
+   "range": [
+    0,
+    127
+   ],
+   "description": "FILTER CH2 - rotate - Filter Effect Knob"
+  },
+  "beat_fx_select_press_once_select_next_effect": {
+   "type": "note",
+   "channel": 4,
+   "note": 99,
+   "description": "BEAT FX SELECT - press once - select next effect"
+  },
+  "beat_fx_select_shift_press_once_select_previous_effect": {
+   "type": "note",
+   "channel": 4,
+   "note": 100,
+   "description": "BEAT FX SELECT + shift - press once - select previous effect"
+  },
+  "beat_left_press_select_previous_effect_unit": {
+   "type": "note",
+   "channel": 4,
+   "note": 74,
+   "description": "BEAT LEFT - press - select previous effect unit"
+  },
+  "beat_right_press_select_next_effect_unit": {
+   "type": "note",
+   "channel": 4,
+   "note": 75,
+   "description": "BEAT RIGHT - press - select next effect unit"
+  },
+  "beat_fx_ch_select_ch1_slide_select_fx_on_deck_1": {
+   "type": "note",
+   "channel": 4,
+   "note": 16,
+   "description": "BEAT FX CH SELECT CH1 - slide - Select FX on DECK 1"
+  },
+  "beat_fx_ch_select_ch2_slide_select_fx_on_deck_2": {
+   "type": "note",
+   "channel": 5,
+   "note": 17,
+   "description": "BEAT FX CH SELECT CH2 - slide - Select FX on DECK 2"
+  },
+  "beat_fx_level_depth_rotate_msb_adjust_fx_level_mix_and_beat_fx_depth_meta_in_the_selected_slot": {
+   "type": "cc",
+   "channel": 4,
+   "cc": 2,
+   "range": [
+    0,
+    127
+   ],
+   "description": "BEAT FX LEVEL/DEPTH - rotate (MSB) - Adjust FX Level (mix) and BEAT FX Depth (meta) in the\n                    selected slot"
+  },
+  "beat_fx_on_off_press_toggle_fx_in_the_selected_slot_when_on_chan1_1_2": {
+   "type": "note",
+   "channel": 4,
+   "note": 71,
+   "description": "BEAT FX ON/OFF - press - Toggle FX in the selected Slot (when on CHAN1/1+2)"
+  },
+  "beat_fx_on_off_press_toggle_fx_in_the_selected_slot_when_on_chan2": {
+   "type": "note",
+   "channel": 5,
+   "note": 71,
+   "description": "BEAT FX ON/OFF - press - Toggle FX in the selected Slot (when on CHAN2)"
+  },
+  "beat_fx_on_off_shift_press_disable_all_enabled_beat_fx_slots_when_on_chan1_1_2": {
+   "type": "note",
+   "channel": 4,
+   "note": 67,
+   "description": "BEAT FX ON/OFF +SHIFT - press - Disable all enabled Beat FX Slots (when on CHAN1/1+2)"
+  },
+  "beat_fx_on_off_shift_press_disable_all_enabled_beat_fx_slots_when_on_chan12": {
+   "type": "note",
+   "channel": 5,
+   "note": 67,
+   "description": "BEAT FX ON/OFF +SHIFT - press - Disable all enabled Beat FX Slots (when on CHAN12)"
+  },
+  "hot_cue_mode_deck1_press_set_hotcue_mode": {
+   "type": "note",
+   "channel": 0,
+   "note": 27,
+   "description": "HOT CUE MODE (DECK1) - press - set hotcue mode"
+  },
+  "hot_cue_mode_deck2_press_set_hotcue_mode": {
+   "type": "note",
+   "channel": 1,
+   "note": 27,
+   "description": "HOT CUE MODE (DECK2) - press - set hotcue mode"
+  },
+  "keyboard_mode_deck1_press_set_keyboard_mode": {
+   "type": "note",
+   "channel": 0,
+   "note": 105,
+   "description": "KEYBOARD MODE (DECK1) - press - set keyboard mode"
+  },
+  "keyboard_mode_deck2_press_set_keyboard_mode": {
+   "type": "note",
+   "channel": 1,
+   "note": 105,
+   "description": "KEYBOARD MODE (DECK2) - press - set keyboard mode"
+  },
+  "pad_fx1_mode_deck1_press_set_pad_fx1_mode": {
+   "type": "note",
+   "channel": 0,
+   "note": 30,
+   "description": "PAD FX1 MODE (DECK1) - press - set pad fx1 mode"
+  },
+  "pad_fx1_mode_deck2_press_set_pad_fx1_mode": {
+   "type": "note",
+   "channel": 1,
+   "note": 30,
+   "description": "PAD FX1 MODE (DECK2) - press - set pad fx1 mode"
+  },
+  "pad_fx2_mode_deck1_press_set_pad_fx2_mode": {
+   "type": "note",
+   "channel": 0,
+   "note": 107,
+   "description": "PAD FX2 MODE (DECK1) - press - set pad fx2 mode"
+  },
+  "pad_fx2_mode_deck2_press_set_pad_fx2_mode": {
+   "type": "note",
+   "channel": 1,
+   "note": 107,
+   "description": "PAD FX2 MODE (DECK2) - press - set pad fx2 mode"
+  },
+  "beat_jump_mode_deck1_press_set_beat_jump_mode": {
+   "type": "note",
+   "channel": 0,
+   "note": 32,
+   "description": "BEAT JUMP MODE (DECK1) - press - set beat jump mode"
+  },
+  "beat_jump_mode_deck2_press_set_beat_jump_mode": {
+   "type": "note",
+   "channel": 1,
+   "note": 32,
+   "description": "BEAT JUMP MODE (DECK2) - press - set beat jump mode"
+  },
+  "beat_loop_mode_deck1_press_set_beat_loop_mode": {
+   "type": "note",
+   "channel": 0,
+   "note": 109,
+   "description": "BEAT LOOP MODE (DECK1) - press - set beat loop mode"
+  },
+  "beat_loop_mode_deck2_press_set_beat_loop_mode": {
+   "type": "note",
+   "channel": 1,
+   "note": 109,
+   "description": "BEAT LOOP MODE (DECK2) - press - set beat loop mode"
+  },
+  "sampler_mode_deck1_press_set_sampler_mode": {
+   "type": "note",
+   "channel": 0,
+   "note": 34,
+   "description": "SAMPLER MODE (DECK1) - press - set sampler mode"
+  },
+  "sampler_mode_deck2_press_set_sampler_mode": {
+   "type": "note",
+   "channel": 1,
+   "note": 34,
+   "description": "SAMPLER MODE (DECK2) - press - set sampler mode"
+  },
+  "key_shift_mode_deck1_press_set_key_shift_mode": {
+   "type": "note",
+   "channel": 0,
+   "note": 111,
+   "description": "KEY SHIFT MODE (DECK1) - press - set key shift mode"
+  },
+  "key_shift_mode_deck2_press_set_key_shift_mode": {
+   "type": "note",
+   "channel": 1,
+   "note": 111,
+   "description": "KEY SHIFT MODE (DECK2) - press - set key shift mode"
+  },
+  "pad_1_deck1_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 7,
+   "note": 0,
+   "description": "PAD 1 (DECK1) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_1_shift_deck1_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 8,
+   "note": 0,
+   "description": "PAD 1 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_1_deck2_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 9,
+   "note": 0,
+   "description": "PAD 1 (DECK2) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_1_shift_deck2_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 10,
+   "note": 0,
+   "description": "PAD 1 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_2_deck1_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 7,
+   "note": 1,
+   "description": "PAD 2 (DECK1) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_2_shift_deck1_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 8,
+   "note": 1,
+   "description": "PAD 2 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_2_deck2_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 9,
+   "note": 1,
+   "description": "PAD 2 (DECK2) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_2_shift_deck2_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 10,
+   "note": 1,
+   "description": "PAD 2 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_3_deck1_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 7,
+   "note": 2,
+   "description": "PAD 3 (DECK1) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_3_shift_deck1_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 8,
+   "note": 2,
+   "description": "PAD 3 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_3_deck2_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 9,
+   "note": 2,
+   "description": "PAD 3 (DECK2) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_3_shift_deck2_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 10,
+   "note": 2,
+   "description": "PAD 3 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_4_deck1_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 7,
+   "note": 3,
+   "description": "PAD 4 (DECK1) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_4_shift_deck1_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 8,
+   "note": 3,
+   "description": "PAD 4 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_4_deck2_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 9,
+   "note": 3,
+   "description": "PAD 4 (DECK2) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_4_shift_deck2_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 10,
+   "note": 3,
+   "description": "PAD 4 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_5_deck1_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 7,
+   "note": 4,
+   "description": "PAD 5(DECK1) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_5_shift_deck1_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 8,
+   "note": 4,
+   "description": "PAD 5 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_5_deck2_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 9,
+   "note": 4,
+   "description": "PAD 5 (DECK2) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_5_shift_deck2_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 10,
+   "note": 4,
+   "description": "PAD 5 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_6_deck1_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 7,
+   "note": 5,
+   "description": "PAD 6 (DECK1) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_6_shift_deck1_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 8,
+   "note": 5,
+   "description": "PAD 6 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_6_deck2_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 9,
+   "note": 5,
+   "description": "PAD 6 (DECK2) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_6_shift_deck2_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 10,
+   "note": 5,
+   "description": "PAD 6 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_7_deck1_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 7,
+   "note": 6,
+   "description": "PAD 7 (DECK1) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_7_shift_deck1_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 8,
+   "note": 6,
+   "description": "PAD 7 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_7_deck2_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 9,
+   "note": 6,
+   "description": "PAD 7 (DECK2) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_7_shift_deck2_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 10,
+   "note": 6,
+   "description": "PAD 7 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_8_deck1_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 7,
+   "note": 7,
+   "description": "PAD 8 (DECK1) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_8_shift_deck1_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 8,
+   "note": 7,
+   "description": "PAD 8 +SHIFT (DECK1) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_8_deck2_hot_cue_mode_press_set_hotcue": {
+   "type": "note",
+   "channel": 9,
+   "note": 7,
+   "description": "PAD 8 (DECK2) HOT CUE MODE - press - set hotcue"
+  },
+  "pad_8_shift_deck2_hot_cue_mode_press_delete_hotcue": {
+   "type": "note",
+   "channel": 10,
+   "note": 7,
+   "description": "PAD 8 +SHIFT (DECK2) HOT CUE MODE - press - delete hotcue"
+  },
+  "pad_1_deck1_keyboard_mode_press_toggle_stem_1": {
+   "type": "note",
+   "channel": 7,
+   "note": 64,
+   "description": "PAD 1 (DECK1) KEYBOARD MODE - press - Toggle Stem 1"
+  },
+  "pad_1_shift_deck1_keyboard_mode_press_only_stem_1_active": {
+   "type": "note",
+   "channel": 8,
+   "note": 64,
+   "description": "PAD 1 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 1 active"
+  },
+  "pad_1_deck2_keyboard_mode_press_toggle_stem_1": {
+   "type": "note",
+   "channel": 9,
+   "note": 64,
+   "description": "PAD 1 (DECK2) KEYBOARD MODE - press - Toggle Stem 1"
+  },
+  "pad_1_shift_deck2_keyboard_mode_press_only_stem_1_active": {
+   "type": "note",
+   "channel": 10,
+   "note": 64,
+   "description": "PAD 1 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 1 active"
+  },
+  "pad_2_deck1_keyboard_mode_press_toggle_stem_2": {
+   "type": "note",
+   "channel": 7,
+   "note": 65,
+   "description": "PAD 2 (DECK1) KEYBOARD MODE - press - Toggle Stem 2"
+  },
+  "pad_2_shift_deck1_keyboard_mode_press_only_stem_2_active": {
+   "type": "note",
+   "channel": 8,
+   "note": 65,
+   "description": "PAD 2 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 2 active"
+  },
+  "pad_2_deck2_keyboard_mode_press_toggle_stem_2": {
+   "type": "note",
+   "channel": 9,
+   "note": 65,
+   "description": "PAD 2 (DECK2) KEYBOARD MODE - press - Toggle Stem 2"
+  },
+  "pad_2_shift_deck2_keyboard_mode_press_only_stem_2_active": {
+   "type": "note",
+   "channel": 10,
+   "note": 65,
+   "description": "PAD 2 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 2 active"
+  },
+  "pad_3_deck1_keyboard_mode_press_toggle_stem_3": {
+   "type": "note",
+   "channel": 7,
+   "note": 66,
+   "description": "PAD 3 (DECK1) KEYBOARD MODE - press - Toggle Stem 3"
+  },
+  "pad_3_shift_deck1_keyboard_mode_press_only_stem_3_active": {
+   "type": "note",
+   "channel": 8,
+   "note": 66,
+   "description": "PAD 3 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 3 active"
+  },
+  "pad_3_deck2_keyboard_mode_press_toggle_stem_3": {
+   "type": "note",
+   "channel": 9,
+   "note": 66,
+   "description": "PAD 3 (DECK2) KEYBOARD MODE - press - Toggle Stem 3"
+  },
+  "pad_3_shift_deck2_keyboard_mode_press_only_stem_3_active": {
+   "type": "note",
+   "channel": 10,
+   "note": 66,
+   "description": "PAD 3 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 3 active"
+  },
+  "pad_4_deck1_keyboard_mode_press_toggle_stem_4": {
+   "type": "note",
+   "channel": 7,
+   "note": 67,
+   "description": "PAD 4 (DECK1) KEYBOARD MODE - press - Toggle Stem 4"
+  },
+  "pad_4_shift_deck1_keyboard_mode_press_only_stem_4_active": {
+   "type": "note",
+   "channel": 8,
+   "note": 67,
+   "description": "PAD 4 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 4 active"
+  },
+  "pad_4_deck2_keyboard_mode_press_toggle_stem_4": {
+   "type": "note",
+   "channel": 9,
+   "note": 67,
+   "description": "PAD 4 (DECK2) KEYBOARD MODE - press - Toggle Stem 4"
+  },
+  "pad_4_shift_deck2_keyboard_mode_press_only_stem_4_active": {
+   "type": "note",
+   "channel": 10,
+   "note": 67,
+   "description": "PAD 4 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 4 active"
+  },
+  "pad_5_deck1_keyboard_mode_press_toggle_stem_1_fx": {
+   "type": "note",
+   "channel": 7,
+   "note": 68,
+   "description": "PAD 5 (DECK1) KEYBOARD MODE - press - Toggle Stem 1 FX"
+  },
+  "pad_5_shift_deck1_keyboard_mode_press_only_stem_1_fx_active": {
+   "type": "note",
+   "channel": 8,
+   "note": 68,
+   "description": "PAD 5 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 1 FX active"
+  },
+  "pad_5_deck2_keyboard_mode_press_toggle_stem_1_fx": {
+   "type": "note",
+   "channel": 9,
+   "note": 68,
+   "description": "PAD 5 (DECK2) KEYBOARD MODE - press - Toggle Stem 1 FX"
+  },
+  "pad_5_shift_deck2_keyboard_mode_press_only_stem_1_fx_active": {
+   "type": "note",
+   "channel": 10,
+   "note": 68,
+   "description": "PAD 5 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 1 FX active"
+  },
+  "pad_6_deck1_keyboard_mode_press_toggle_stem_2_fx": {
+   "type": "note",
+   "channel": 7,
+   "note": 69,
+   "description": "PAD 6 (DECK1) KEYBOARD MODE - press - Toggle Stem 2 FX"
+  },
+  "pad_6_shift_deck1_keyboard_mode_press_only_stem_2_fx_active": {
+   "type": "note",
+   "channel": 8,
+   "note": 69,
+   "description": "PAD 6 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 2 FX active"
+  },
+  "pad_6_deck2_keyboard_mode_press_toggle_stem_2_fx": {
+   "type": "note",
+   "channel": 9,
+   "note": 69,
+   "description": "PAD 6 (DECK2) KEYBOARD MODE - press - Toggle Stem 2 FX"
+  },
+  "pad_6_shift_deck2_keyboard_mode_press_only_stem_2_fx_active": {
+   "type": "note",
+   "channel": 10,
+   "note": 69,
+   "description": "PAD 6 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 2 FX active"
+  },
+  "pad_7_deck1_keyboard_mode_press_toggle_stem_3_fx": {
+   "type": "note",
+   "channel": 7,
+   "note": 70,
+   "description": "PAD 7 (DECK1) KEYBOARD MODE - press - Toggle Stem 3 FX"
+  },
+  "pad_7_shift_deck1_keyboard_mode_press_only_stem_3_fx_active": {
+   "type": "note",
+   "channel": 8,
+   "note": 70,
+   "description": "PAD 7 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 3 FX active"
+  },
+  "pad_7_deck2_keyboard_mode_press_toggle_stem_3_fx": {
+   "type": "note",
+   "channel": 9,
+   "note": 70,
+   "description": "PAD 7 (DECK2) KEYBOARD MODE - press - Toggle Stem 3 FX"
+  },
+  "pad_7_shift_deck2_keyboard_mode_press_only_stem_3_fx_active": {
+   "type": "note",
+   "channel": 10,
+   "note": 70,
+   "description": "PAD 7 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 3 FX active"
+  },
+  "pad_8_deck1_keyboard_mode_press_toggle_stem_4_fx": {
+   "type": "note",
+   "channel": 7,
+   "note": 71,
+   "description": "PAD 8 (DECK1) KEYBOARD MODE - press - Toggle Stem 4 FX"
+  },
+  "pad_8_shift_deck1_keyboard_mode_press_only_stem_4_fx_active": {
+   "type": "note",
+   "channel": 8,
+   "note": 71,
+   "description": "PAD 8 +SHIFT (DECK1) KEYBOARD MODE - press - Only Stem 4 FX active"
+  },
+  "pad_8_deck2_keyboard_mode_press_toggle_stem_4_fx": {
+   "type": "note",
+   "channel": 9,
+   "note": 71,
+   "description": "PAD 8 (DECK2) KEYBOARD MODE - press - Toggle Stem 4 FX"
+  },
+  "pad_8_shift_deck2_keyboard_mode_press_only_stem_4_fx_active": {
+   "type": "note",
+   "channel": 10,
+   "note": 71,
+   "description": "PAD 8 +SHIFT (DECK2) KEYBOARD MODE - press - Only Stem 4 FX active"
+  },
+  "pad_1_deck1_beat_loop_mode_press_1_4_beatloop": {
+   "type": "note",
+   "channel": 7,
+   "note": 96,
+   "description": "PAD 1 (DECK1) BEAT LOOP MODE - press - 1/4 Beatloop"
+  },
+  "pad_1_deck2_beat_loop_mode_press_1_4_beatloop": {
+   "type": "note",
+   "channel": 9,
+   "note": 96,
+   "description": "PAD 1 (DECK2) BEAT LOOP MODE - press - 1/4 Beatloop"
+  },
+  "pad_2_deck1_beat_loop_mode_press_1_2_beatloop": {
+   "type": "note",
+   "channel": 7,
+   "note": 97,
+   "description": "PAD 2 (DECK1) BEAT LOOP MODE - press - 1/2 Beatloop"
+  },
+  "pad_2_deck2_beat_loop_mode_press_1_2_beatloop": {
+   "type": "note",
+   "channel": 9,
+   "note": 97,
+   "description": "PAD 2 (DECK2) BEAT LOOP MODE - press - 1/2 Beatloop"
+  },
+  "pad_3_deck1_beat_loop_mode_press_1_1_beatloop": {
+   "type": "note",
+   "channel": 7,
+   "note": 98,
+   "description": "PAD 3 (DECK1) BEAT LOOP MODE - press - 1/1 Beatloop"
+  },
+  "pad_3_deck2_beat_loop_mode_press_1_1_beatloop": {
+   "type": "note",
+   "channel": 9,
+   "note": 98,
+   "description": "PAD 3 (DECK2) BEAT LOOP MODE - press - 1/1 Beatloop"
+  },
+  "pad_4_deck1_beat_loop_mode_press_2_beatloop": {
+   "type": "note",
+   "channel": 7,
+   "note": 99,
+   "description": "PAD 4 (DECK1) BEAT LOOP MODE - press - 2 Beatloop"
+  },
+  "pad_4_deck2_beat_loop_mode_press_2_beatloop": {
+   "type": "note",
+   "channel": 9,
+   "note": 99,
+   "description": "PAD 4 (DECK2) BEAT LOOP MODE - press - 2 Beatloop"
+  },
+  "pad_5_deck1_beat_loop_mode_press_4_beatloop": {
+   "type": "note",
+   "channel": 7,
+   "note": 100,
+   "description": "PAD 5 (DECK1) BEAT LOOP MODE - press - 4 Beatloop"
+  },
+  "pad_5_deck2_beat_loop_mode_press_4_beatloop": {
+   "type": "note",
+   "channel": 9,
+   "note": 100,
+   "description": "PAD 5 (DECK2) BEAT LOOP MODE - press - 4 Beatloop"
+  },
+  "pad_6_deck1_beat_loop_mode_press_8_beatloop": {
+   "type": "note",
+   "channel": 7,
+   "note": 101,
+   "description": "PAD 6 (DECK1) BEAT LOOP MODE - press - 8 Beatloop"
+  },
+  "pad_6_deck2_beat_loop_mode_press_8_beatloop": {
+   "type": "note",
+   "channel": 9,
+   "note": 101,
+   "description": "PAD 6 (DECK2) BEAT LOOP MODE - press - 8 Beatloop"
+  },
+  "pad_7_deck1_beat_loop_mode_press_16_beatloop": {
+   "type": "note",
+   "channel": 7,
+   "note": 102,
+   "description": "PAD 7 (DECK1) BEAT LOOP MODE - press - 16 Beatloop"
+  },
+  "pad_7_deck2_beat_loop_mode_press_16_beatloop": {
+   "type": "note",
+   "channel": 9,
+   "note": 102,
+   "description": "PAD 7 (DECK2) BEAT LOOP MODE - press - 16 Beatloop"
+  },
+  "pad_8_deck1_beat_loop_mode_press_32_beatloop": {
+   "type": "note",
+   "channel": 7,
+   "note": 103,
+   "description": "PAD 8 (DECK1) BEAT LOOP MODE - press - 32 Beatloop"
+  },
+  "pad_8_deck2_beat_loop_mode_press_32_beatloop": {
+   "type": "note",
+   "channel": 9,
+   "note": 103,
+   "description": "PAD 8 (DECK2) BEAT LOOP MODE - press - 32 Beatloop"
+  },
+  "pad_1_deck1_beat_jump_mode_press_jump_1_beat_backwards": {
+   "type": "note",
+   "channel": 7,
+   "note": 32,
+   "description": "PAD 1 (DECK1) BEAT JUMP MODE - press - Jump 1 Beat backwards"
+  },
+  "pad_1_deck2_beat_jump_mode_press_jump_1_beat_backwards": {
+   "type": "note",
+   "channel": 9,
+   "note": 32,
+   "description": "PAD 1 (DECK2) BEAT JUMP MODE - press - Jump 1 Beat backwards"
+  },
+  "pad_2_deck1_beat_jump_mode_press_jump_1_beat_forwards": {
+   "type": "note",
+   "channel": 7,
+   "note": 33,
+   "description": "PAD 2 (DECK1) BEAT JUMP MODE - press - Jump 1 Beat forwards"
+  },
+  "pad_2_deck2_beat_jump_mode_press_jump_1_beat_forwards": {
+   "type": "note",
+   "channel": 9,
+   "note": 33,
+   "description": "PAD 2 (DECK2) BEAT JUMP MODE - press - Jump 1 Beat forwards"
+  },
+  "pad_3_deck1_beat_jump_mode_press_jump_2_beats_backwards": {
+   "type": "note",
+   "channel": 7,
+   "note": 34,
+   "description": "PAD 3 (DECK1) BEAT JUMP MODE - press - Jump 2 Beats backwards"
+  },
+  "pad_3_deck2_beat_jump_mode_press_jump_2_beats_backwards": {
+   "type": "note",
+   "channel": 9,
+   "note": 34,
+   "description": "PAD 3 (DECK2) BEAT JUMP MODE - press - Jump 2 Beats backwards"
+  },
+  "pad_4_deck1_beat_jump_mode_press_jump_2_beats_forwards": {
+   "type": "note",
+   "channel": 7,
+   "note": 35,
+   "description": "PAD 4 (DECK1) BEAT JUMP MODE - press - Jump 2 Beats forwards"
+  },
+  "pad_4_deck2_beat_jump_mode_press_jump_2_beats_forwards": {
+   "type": "note",
+   "channel": 9,
+   "note": 35,
+   "description": "PAD 4 (DECK2) BEAT JUMP MODE - press - Jump 2 Beats forwards"
+  },
+  "pad_5_deck1_beat_jump_mode_press_jump_4_beats_backwards": {
+   "type": "note",
+   "channel": 7,
+   "note": 36,
+   "description": "PAD 5 (DECK1) BEAT JUMP MODE - press - Jump 4 Beats backwards"
+  },
+  "pad_5_deck2_beat_jump_mode_press_jump_4_beats_backwards": {
+   "type": "note",
+   "channel": 9,
+   "note": 36,
+   "description": "PAD 5 (DECK2) BEAT JUMP MODE - press - Jump 4 Beats backwards"
+  },
+  "pad_6_deck1_beat_jump_mode_press_jump_4_beats_forwards": {
+   "type": "note",
+   "channel": 7,
+   "note": 37,
+   "description": "PAD 6 (DECK1) BEAT JUMP MODE - press - Jump 4 Beats forwards"
+  },
+  "pad_6_deck2_beat_jump_mode_press_jump_4_beats_forwards": {
+   "type": "note",
+   "channel": 9,
+   "note": 37,
+   "description": "PAD 6 (DECK2) BEAT JUMP MODE - press - Jump 4 Beats forwards"
+  },
+  "pad_7_deck1_beat_jump_mode_press_jump_8_beats_backwards": {
+   "type": "note",
+   "channel": 7,
+   "note": 38,
+   "description": "PAD 7 (DECK1) BEAT JUMP MODE - press - Jump 8 Beats backwards"
+  },
+  "pad_7_deck2_beat_jump_mode_press_jump_8_beats_backwards": {
+   "type": "note",
+   "channel": 9,
+   "note": 38,
+   "description": "PAD 7 (DECK2) BEAT JUMP MODE - press - Jump 8 Beats backwards"
+  },
+  "pad_8_deck1_beat_jump_mode_press_jump_8_beats_forwards": {
+   "type": "note",
+   "channel": 7,
+   "note": 39,
+   "description": "PAD 8 (DECK1) BEAT JUMP MODE - press - Jump 8 Beats forwards"
+  },
+  "pad_8_deck2_beat_jump_mode_press_jump_8_beats_forwards": {
+   "type": "note",
+   "channel": 9,
+   "note": 39,
+   "description": "PAD 8 (DECK2) BEAT JUMP MODE - press - Jump 8 Beats forwards"
+  },
+  "pad_7_deck1_shift_beat_jump_mode_press_decrease_beatjump_by_a_factor_of_16": {
+   "type": "note",
+   "channel": 8,
+   "note": 38,
+   "description": "PAD 7 (DECK1) +SHift BEAT JUMP MODE - press - decrease Beatjump by a factor of 16"
+  },
+  "pad_7_deck2_shift_beat_jump_mode_press_decrease_beatjump_by_a_factor_of_16": {
+   "type": "note",
+   "channel": 10,
+   "note": 38,
+   "description": "PAD 7 (DECK2) +Shift BEAT JUMP MODE - press - decrease Beatjump by a factor of 16"
+  },
+  "pad_8_deck1_shift_beat_jump_mode_press_increase_beatjump_by_a_factor_of_16": {
+   "type": "note",
+   "channel": 8,
+   "note": 39,
+   "description": "PAD 8 (DECK1) +SHift BEAT JUMP MODE - press - increase Beatjump by a factor of 16"
+  },
+  "pad_8_deck2_shift_beat_jump_mode_press_increase_beatjump_by_a_factor_of_16": {
+   "type": "note",
+   "channel": 10,
+   "note": 39,
+   "description": "PAD 8 (DECK2) +Shift BEAT JUMP MODE - press - increase Beatjump by a factor of 16"
+  },
+  "pad_1_left_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 7,
+   "note": 48,
+   "description": "PAD 1 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_1_left_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 8,
+   "note": 48,
+   "description": "PAD 1 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_2_left_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 7,
+   "note": 49,
+   "description": "PAD 2 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_2_left_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 8,
+   "note": 49,
+   "description": "PAD 2 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_3_left_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 7,
+   "note": 50,
+   "description": "PAD 3 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_3_left_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 8,
+   "note": 50,
+   "description": "PAD 3 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_4_left_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 7,
+   "note": 51,
+   "description": "PAD 4 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_4_left_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 8,
+   "note": 51,
+   "description": "PAD 4 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_5_left_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 7,
+   "note": 52,
+   "description": "PAD 5 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_5_left_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 8,
+   "note": 52,
+   "description": "PAD 5 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_6_left_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 7,
+   "note": 53,
+   "description": "PAD 6 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_6_left_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 8,
+   "note": 53,
+   "description": "PAD 6 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_7_left_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 7,
+   "note": 54,
+   "description": "PAD 7 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_7_left_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 8,
+   "note": 54,
+   "description": "PAD 7 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_8_left_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 7,
+   "note": 55,
+   "description": "PAD 8 (LEFT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_8_left_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 8,
+   "note": 55,
+   "description": "PAD 8 (LEFT)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_1_right_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 9,
+   "note": 48,
+   "description": "PAD 1 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_1_right_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 10,
+   "note": 48,
+   "description": "PAD 1 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_2_right_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 9,
+   "note": 49,
+   "description": "PAD 2 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_2_right_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 10,
+   "note": 49,
+   "description": "PAD 2 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_3_right_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 9,
+   "note": 50,
+   "description": "PAD 3 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_3_right_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 10,
+   "note": 50,
+   "description": "PAD 3 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_4_right_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 9,
+   "note": 51,
+   "description": "PAD 4 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_4_right_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 10,
+   "note": 51,
+   "description": "PAD 4 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_5_right_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 9,
+   "note": 52,
+   "description": "PAD 5 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_5_right_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 10,
+   "note": 52,
+   "description": "PAD 5 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_6_right_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 9,
+   "note": 53,
+   "description": "PAD 6 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_6_right_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 10,
+   "note": 53,
+   "description": "PAD 6 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_7_right_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 9,
+   "note": 54,
+   "description": "PAD 7 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_7_right_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 10,
+   "note": 54,
+   "description": "PAD 7 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_8_right_sample_mode_press_play_sample_or_load_track": {
+   "type": "note",
+   "channel": 9,
+   "note": 55,
+   "description": "PAD 8 (RIGHT) SAMPLE MODE - press - Play Sample or Load Track"
+  },
+  "pad_8_right_shift_sample_mode_press_stop_playback_or_eject_track": {
+   "type": "note",
+   "channel": 10,
+   "note": 55,
+   "description": "PAD 8 (Right)+SHIFT SAMPLE MODE - press - Stop Playback or Eject Track"
+  },
+  "pad_1_deck1_key_shift_mode_press_no_pitch_modification": {
+   "type": "note",
+   "channel": 7,
+   "note": 112,
+   "description": "PAD 1 (DECK1) KEY SHIFT MODE - press - No pitch modification"
+  },
+  "pad_1_shift_deck1_key_shift_mode_press_increase_the_pitch_by_1_semitone": {
+   "type": "note",
+   "channel": 8,
+   "note": 112,
+   "description": "PAD 1 +SHIFT (DECK1) KEY SHIFT MODE - press - Increase the pitch by 1 semitone"
+  },
+  "pad_1_deck2_key_shift_mode_press_no_pitch_modification": {
+   "type": "note",
+   "channel": 9,
+   "note": 112,
+   "description": "PAD 1 (DECK2) KEY SHIFT MODE - press - No pitch modification"
+  },
+  "pad_1_shift_deck2_key_shift_mode_press_increase_the_pitch_by_1_semitone": {
+   "type": "note",
+   "channel": 10,
+   "note": 112,
+   "description": "PAD 1 +SHIFT (DECK2) KEY SHIFT MODE - press - Increase the pitch by 1 semitone"
+  },
+  "pad_2_deck1_key_shift_mode_press_set_pitch_to_one_semitone_up": {
+   "type": "note",
+   "channel": 7,
+   "note": 113,
+   "description": "PAD 2 (DECK1) KEY SHIFT MODE - press - Set pitch to one semitone up"
+  },
+  "crossfader": {
+   "type": "cc",
+   "channel": 6,
+   "cc": 31,
+   "range": [
+    0,
+    127
+   ],
+   "description": "Crossfader (verificado con learn_map)"
   }
+ }
 }
