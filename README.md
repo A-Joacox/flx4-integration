@@ -22,25 +22,25 @@ O simplemente: `.\setup.ps1`
 
 ### C++ (render)
 
-Requiere: VS 2022 Build Tools (workload C++), CMake ≥ 3.21, vcpkg integrado.
+Requiere: VS 2022 Build Tools (workload C++), CMake ≥ 3.21, vcpkg.
+
+Instalar vcpkg (una sola vez):
+
+```powershell
+git clone https://github.com/microsoft/vcpkg C:\vcpkg
+C:\vcpkg\bootstrap-vcpkg.bat
+[Environment]::SetEnvironmentVariable("VCPKG_ROOT", "C:\vcpkg", "User")
+# reabrir la terminal
+```
+
+Compilar (las comillas en el toolchain son obligatorias en PowerShell):
 
 ```powershell
 cd render
-cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_ROOT\scripts\buildsystems\vcpkg.cmake
+cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT\scripts\buildsystems\vcpkg.cmake"
 cmake --build build --config Release
 .\build\Release\flx4_render.exe
 ```
 
-vcpkg instala las dependencias automáticamente desde `render/vcpkg.json` (modo manifest).
-
-## Estructura
-
-```
-midi/     scripts Python de captura MIDI
-audio/    captura/análisis de audio (WASAPI loopback, FFT, beat)
-bridge/   servidor OSC Python -> C++
-render/   proyecto C++ OpenGL (CMake + vcpkg)
-shaders/  fragment shaders .glsl
-presets/  midi_map.json y presets de visuales
-common/   docs y configs compartidas
-```
+Si una configuración falló antes, borrar el cache: `Remove-Item -Recurse -Force build`.
+La primera vez tarda varios minutos (vcpkg compila glfw3/glad/glm).
