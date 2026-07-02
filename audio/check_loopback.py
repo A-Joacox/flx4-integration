@@ -5,11 +5,16 @@ Pone musica y deberias ver la barra moverse.
 
 Uso:
     python audio/check_loopback.py              # loopback del output default
-    python audio/check_loopback.py --device 14  # dispositivo especifico de la lista
+    python audio/check_loopback.py --device 13  # dispositivo especifico de la lista
 
-Nota rekordbox: si usa el driver ASIO del FLX4 (default), toma el dispositivo en
-modo exclusivo y el loopback falla (-9996). Cambiar en rekordbox a WASAPI
-compartido, o probar primero con musica desde el navegador/Spotify.
+Nota rekordbox (verificado 2026-07): rekordbox toma el FLX4 en modo exclusivo
+aunque este configurado como "DDJ-FLX4 WASAPI" (-9996/-9998 al abrir su loopback).
+Pipeline que funciona: activar "PC MASTER OUT" en rekordbox (duplica el master
+hacia los parlantes de la notebook) y capturar el loopback de los parlantes:
+
+    python audio/check_loopback.py --device 13   # Speakers Realtek [Loopback]
+
+(el indice puede cambiar entre sesiones; verificar en la lista)
 """
 
 import argparse
@@ -96,8 +101,9 @@ def main():
         except OSError as e:
             print(f"\nNo se pudo abrir el dispositivo ({e}).")
             print("Causas tipicas:")
-            print("  - Otra app lo tiene en modo exclusivo (rekordbox con driver ASIO).")
-            print("    -> En rekordbox: Preferencias > Audio > cambiar a WASAPI compartido.")
+            print("  - Otra app lo tiene en modo exclusivo (rekordbox toma el FLX4 siempre,")
+            print("    incluso configurado como WASAPI).")
+            print("    -> Usar el loopback de los parlantes con PC MASTER OUT activado en rekordbox.")
             print("  - El dispositivo se desconecto o cambio de indice: volve a correr el script.")
             print("  - Proba otro de la lista con --device N.")
             sys.exit(1)
