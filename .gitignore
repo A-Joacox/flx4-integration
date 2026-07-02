@@ -1,0 +1,21 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# C++ / CMake
+render/build/
+render/out/
+vcpkg_installed/
+*.obj
+*.exe
+*.pdb
+
+# IDE
+.vs/
+.vscode/
+.idea/
+
+# Output
+*.mp4
+*.log

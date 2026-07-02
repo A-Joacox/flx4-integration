@@ -1,0 +1,9 @@
+{
+  "_comment": "Mapeo CC->control del FLX4. Completar en Fase 1 con los valores reales logueados por midi/check_midi.py",
+  "device_name_contains": "FLX4",
+  "controls": {},
+  "example_entry": {
+    "crossfader": { "type": "cc", "channel": 0, "cc": 8, "range": [0, 127] },
+    "jog_left": { "type": "cc_relative", "channel": 0, "cc": 33, "notes": "confirmar si es relative o pitchbend" }
+  }
+}
