@@ -44,3 +44,23 @@ cmake --build build --config Release
 
 Si una configuración falló antes, borrar el cache: `Remove-Item -Recurse -Force build`.
 La primera vez tarda varios minutos (vcpkg compila glfw3/glad/glm).
+
+## Troubleshooting (verificado en Fase 0)
+
+### CMake: "Could not find toolchain file"
+
+- **Muestra el literal `$env:VCPKG_ROOT\...`**: faltan las comillas. En PowerShell el argumento debe ir `-DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT\scripts\buildsystems\vcpkg.cmake"`.
+- **Muestra `"\scripts\buildsystems\vcpkg.cmake"` (raíz vacía)**: `VCPKG_ROOT` no existe en esta sesión. `SetEnvironmentVariable(..., "User")` solo afecta terminales nuevas (en VS Code, reiniciar VS Code entero). Fix inmediato: `$env:VCPKG_ROOT = "C:\vcpkg"`.
+- Después de cualquier configuración fallida, borrar el cache antes de reintentar: `Remove-Item -Recurse -Force build`.
+- Verificar el toolchain: `Test-Path "$env:VCPKG_ROOT\scripts\buildsystems\vcpkg.cmake"` debe dar `True`.
+
+### Audio: loopback del FLX4 falla con -9996 / -9998
+
+rekordbox toma el FLX4 en modo exclusivo aunque esté configurado como "DDJ-FLX4 WASAPI" — su loopback no se puede abrir con rekordbox corriendo. Solución (verificada): activar **PC MASTER OUT** en rekordbox (Preferencias → Audio), que duplica el master hacia los parlantes de la notebook, y capturar el loopback de los parlantes:
+
+```powershell
+python .\audio\check_loopback.py            # lista los dispositivos
+python .\audio\check_loopback.py --device 13  # Speakers Realtek [Loopback] (el índice puede cambiar)
+```
+
+Si el RMS queda en ~0, la música está saliendo por otro dispositivo — verificá cuál loopback corresponde al output que suena.
