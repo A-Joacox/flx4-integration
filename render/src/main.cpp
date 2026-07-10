@@ -2,7 +2,7 @@
 // Los mismos uniforms se conectan al bridge OSC en Fase 4.
 //
 // Controles:
-//   1 / 2 / 3 / 4: modo manual / morph / tunel infinito / viaje (auto-zoom)
+//   1-6          : manual / morph / tunel / viaje (auto-zoom) / caleidoscopio / neon
 //   Flechas      : mover offset          | W / S      : zoom in / out
 //   A / D        : c.x -/+ (o velocidad de morph/tunel en modos 1-2)
 //   Z / C        : c.y -/+               | Q / E      : iteraciones -/+
@@ -164,6 +164,8 @@ void keyCallback(GLFWwindow* win, int key, int, int action, int) {
         case GLFW_KEY_2:      params.mode = 1; break;
         case GLFW_KEY_3:      params.mode = 2; break;
         case GLFW_KEY_4:      params.mode = 3; dive = DiveAuto{}; break;
+        case GLFW_KEY_5:      params.mode = 4; break;
+        case GLFW_KEY_6:      params.mode = 5; break;
         default: break;
     }
 }
@@ -288,9 +290,9 @@ int main() {
         params.hueShift += k * (params.hueTarget - params.hueShift);
 
         // autopilot: la musica va a modular esto mismo en Fase 4/5
-        if (params.mode == 1) {
-            // c recorre el borde de la cardioide de Mandelbrot (siempre apenas afuera:
-            // adentro el Julia se llena de negro). Dendritas y polvo en morph continuo.
+        if (params.mode == 1 || params.mode == 4 || params.mode == 5) {
+            // morph/caleidoscopio/neon: c recorre el borde de la cardioide de Mandelbrot
+            // (siempre apenas afuera: adentro el Julia se llena de negro).
             params.morphPhase += (0.08f + 0.20f * params.mid) * params.speed * dt;
             cardioidC(params.morphPhase, params.bass);
         } else if (params.mode == 2) {
@@ -318,9 +320,9 @@ int main() {
                 float k2 = 1.0f - std::exp(-1.6f * rate * dt);
                 params.offx += k2 * (dive.tx - params.offx);
                 params.offy += k2 * (dive.ty - params.offy);
-                if (params.zoom > 2.0e4f) { dive.stage = 2; dive.t = 0.0f; }  // limite de precision float
+                if (params.zoom > 2.5e3f) { dive.stage = 2; dive.t = 0.0f; }  // profundidad con estructura visible
             } else if (dive.stage == 2) {   // pausa en el fondo
-                if (dive.t > 2.5f) { dive.stage = 3; dive.t = 0.0f; }
+                if (dive.t > 1.8f) { dive.stage = 3; dive.t = 0.0f; }
             } else {                        // regreso (mas rapido que la ida)
                 params.zoom *= std::exp(-1.7f * rate * dt);
                 if (params.zoom < 0.85f) {
@@ -359,8 +361,8 @@ int main() {
         ++frames;
         if (now - fpsT >= 1.0) {
             char title[128];
-            const char* modeName = params.mode == 0 ? "manual" : params.mode == 1 ? "morph"
-                                 : params.mode == 2 ? "tunel" : "viaje";
+            static const char* kModes[] = {"manual", "morph", "tunel", "viaje", "kaleido", "neon"};
+            const char* modeName = kModes[params.mode >= 0 && params.mode <= 5 ? params.mode : 0];
             std::snprintf(title, sizeof title,
                           "flx4-render | %d fps | %s x%.1f | iter=%d zoom=%.2f c=(%.3f,%.3f)",
                           frames, modeName, params.speed, params.iterations, params.zoom,
