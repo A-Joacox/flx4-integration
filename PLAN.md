@@ -60,12 +60,12 @@ Aplicación híbrida (Python + C++) que se conecta al controlador MIDI Numark/De
 > Implicancia: el volumen de Windows de los parlantes afecta la señal capturada —
 > normalizar o fijar volumen en Fase 2.
 
-- [ ] WASAPI loopback con buffer pequeño (512-1024 samples)
-- [ ] Selección de dispositivo por nombre (no por índice, cambia entre sesiones): preferir loopback de parlantes, no del FLX4
-- [ ] FFT en tiempo real con `numpy.fft.rfft`
-- [ ] 3 bandas de energía (bass/mid/treble)
-- [ ] Detector de beat: energía actual vs. media móvil con umbral adaptativo
-- [ ] Manejar device switching de Windows (re-detección del loopback)
+- [x] WASAPI loopback con buffer pequeño (512-1024 samples)
+- [x] Selección de dispositivo por nombre (no por índice, cambia entre sesiones): preferir loopback de parlantes, no del FLX4
+- [x] FFT en tiempo real con `numpy.fft.rfft`
+- [x] 3 bandas de energía (bass/mid/treble)
+- [x] Detector de beat: energía actual vs. media móvil con umbral adaptativo
+- [x] Manejar device switching de Windows (re-detección del loopback)
 - **Entregable**: visualización simple con 3 bandas + flag de beat
 
 ## Fase 3 — Render base en OpenGL/C++ (4-5 días)
