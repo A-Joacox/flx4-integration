@@ -210,11 +210,16 @@ int main() {
 
         // autopilot: la musica va a modular esto mismo en Fase 4/5
         if (params.mode == 1) {
-            // c orbita cerca del borde del conjunto de Mandelbrot -> morph continuo
-            params.morphPhase += (0.10f + 0.25f * params.mid) * params.speed * dt;
-            float wobble = 0.16f + 0.10f * std::sin(params.morphPhase * 0.37f);
-            params.cx = -0.62f + wobble * std::cos(params.morphPhase);
-            params.cy =  0.42f + wobble * std::sin(params.morphPhase * 1.13f);
+            // c recorre el borde de la cardioide de Mandelbrot: c = u/2 - u^2/4, u = e^(i*theta).
+            // Sobre el borde los Julia son dendritas finas (nunca interior lleno).
+            // "breath" respira apenas hacia afuera/adentro del borde para variar densidad.
+            params.morphPhase += (0.08f + 0.20f * params.mid) * params.speed * dt;
+            float th = params.morphPhase;
+            float breath = 1.0f + 0.015f * std::sin(th * 0.31f) + 0.01f * params.bass;
+            float cx = 0.5f * std::cos(th) - 0.25f * std::cos(2.0f * th);
+            float cy = 0.5f * std::sin(th) - 0.25f * std::sin(2.0f * th);
+            params.cx = cx * breath;
+            params.cy = cy * breath;
         } else if (params.mode == 2) {
             // el tunel avanza solo; el bass lo acelera (Fase 5)
             params.travel += (0.35f + 1.2f * params.bass + 0.5f * params.beat) * params.speed * dt;
