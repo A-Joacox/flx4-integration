@@ -70,10 +70,10 @@ Aplicación híbrida (Python + C++) que se conecta al controlador MIDI Numark/De
 
 ## Fase 3 — Render base en OpenGL/C++ (4-5 días)
 
-- [ ] Proyecto CMake con GLFW + GLAD, ventana con contexto OpenGL 4.6
-- [ ] Fragment shader con fractal tipo Julia set
-- [ ] Uniforms controlables por teclado (zoom, offset, iteraciones, color)
-- [ ] Confirmar 60fps estables a 1920x1080
+- [x] Proyecto CMake con GLFW + GLAD, ventana con contexto OpenGL 4.6
+- [x] Fragment shader con fractal tipo Julia set
+- [x] Uniforms controlables por teclado (zoom, offset, iteraciones, color)
+- [x] Confirmar 60fps estables a 1920x1080
 - **Entregable**: fractal a 60fps controlable con teclas
 
 ## Fase 4 — Puente Python ↔ C++ (2-3 días)
