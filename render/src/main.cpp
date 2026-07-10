@@ -2,7 +2,7 @@
 // Los mismos uniforms se conectan al bridge OSC en Fase 4.
 //
 // Controles:
-//   1 / 2 / 3    : modo manual / morph (c orbita solo) / tunel infinito
+//   1 / 2 / 3 / 4: modo manual / morph / tunel infinito / viaje (auto-zoom)
 //   Flechas      : mover offset          | W / S      : zoom in / out
 //   A / D        : c.x -/+ (o velocidad de morph/tunel en modos 1-2)
 //   Z / C        : c.y -/+               | Q / E      : iteraciones -/+
@@ -23,6 +23,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstring>
+#include <random>
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -92,6 +93,41 @@ void main() {
 
 Params params;
 
+// ---- modo viaje: crucero -> inmersion a un punto del conjunto -> regreso ----
+struct DiveAuto {
+    int stage = 0;          // 0 crucero, 1 inmersion, 2 pausa, 3 regreso
+    float t = 0.0f;
+    float cruiseDur = 6.0f;
+    float tx = 0.0f, ty = 0.0f;  // punto objetivo (sobre el conjunto de Julia)
+};
+DiveAuto dive;
+
+// iteracion inversa z -> +-sqrt(z - c): converge a un punto DEL conjunto de Julia,
+// o sea siempre una zona con detalle infinito. Signos al azar -> punto distinto cada vez.
+void pickDiveTarget() {
+    static std::mt19937 rng{std::random_device{}()};
+    std::uniform_int_distribution<int> coin(0, 1);
+    float zx = 0.3f, zy = 0.2f;
+    for (int i = 0; i < 48; ++i) {
+        float wx = zx - params.cx, wy = zy - params.cy;
+        float r = std::sqrt(wx * wx + wy * wy);
+        float sx = std::sqrt(std::fmax(0.0f, (r + wx) * 0.5f));
+        float sy = std::sqrt(std::fmax(0.0f, (r - wx) * 0.5f));
+        if (wy < 0.0f) sy = -sy;
+        if (coin(rng)) { sx = -sx; sy = -sy; }
+        zx = sx; zy = sy;
+    }
+    dive.tx = zx;
+    dive.ty = zy;
+}
+
+void cardioidC(float th, float bass) {
+    // c = u/2 - u^2/4 sobre el borde de la cardioide, apenas afuera
+    float breath = 1.012f + 0.008f * std::sin(th * 0.31f) + 0.008f * bass;
+    params.cx = (0.5f * std::cos(th) - 0.25f * std::cos(2.0f * th)) * breath;
+    params.cy = (0.5f * std::sin(th) - 0.25f * std::sin(2.0f * th)) * breath;
+}
+
 void handleKeys(GLFWwindow* win, float dt) {
     auto down = [&](int k) { return glfwGetKey(win, k) == GLFW_PRESS; };
     float panSpeed = 1.0f * dt / params.zoom;
@@ -127,6 +163,7 @@ void keyCallback(GLFWwindow* win, int key, int, int action, int) {
         case GLFW_KEY_1:      params.mode = 0; break;
         case GLFW_KEY_2:      params.mode = 1; break;
         case GLFW_KEY_3:      params.mode = 2; break;
+        case GLFW_KEY_4:      params.mode = 3; dive = DiveAuto{}; break;
         default: break;
     }
 }
@@ -232,7 +269,10 @@ int main() {
             else if (!std::strcmp(addr, "/ctl/zoom"))     params.zoomTarget = 0.4f * std::pow(7.5f, v);
             else if (!std::strcmp(addr, "/ctl/speed"))    params.speedTarget = 0.05f + 3.95f * v;
             else if (!std::strcmp(addr, "/ctl/hue"))      params.hueTarget = v;
-            else if (!std::strcmp(addr, "/ctl/mode"))     params.mode = static_cast<int>(v + 0.5f);
+            else if (!std::strcmp(addr, "/ctl/mode")) {
+                params.mode = static_cast<int>(v + 0.5f);
+                if (params.mode == 3) dive = DiveAuto{};
+            }
             else if (!std::strcmp(addr, "/ctl/reset")) {
                 float b = params.bass, m = params.mid, tr = params.treble;
                 params = Params{};
@@ -242,29 +282,53 @@ int main() {
 
         // suavizado exponencial hacia los targets OSC (~8 Hz de respuesta)
         float k = 1.0f - std::exp(-8.0f * dt);
-        params.zoom     += k * (params.zoomTarget - params.zoom);
+        if (params.mode != 3) params.zoom += k * (params.zoomTarget - params.zoom);
+        else                  params.zoomTarget = params.zoom;  // el viaje maneja el zoom
         params.speed    += k * (params.speedTarget - params.speed);
         params.hueShift += k * (params.hueTarget - params.hueShift);
 
         // autopilot: la musica va a modular esto mismo en Fase 4/5
         if (params.mode == 1) {
-            // c recorre el borde de la cardioide de Mandelbrot: c = u/2 - u^2/4, u = e^(i*theta).
-            // Sobre el borde los Julia son dendritas finas (nunca interior lleno).
-            // "breath" respira apenas hacia afuera/adentro del borde para variar densidad.
+            // c recorre el borde de la cardioide de Mandelbrot (siempre apenas afuera:
+            // adentro el Julia se llena de negro). Dendritas y polvo en morph continuo.
             params.morphPhase += (0.08f + 0.20f * params.mid) * params.speed * dt;
-            float th = params.morphPhase;
-            // siempre apenas AFUERA del borde: adentro el Julia se llena de negro
-            float breath = 1.012f + 0.008f * std::sin(th * 0.31f) + 0.008f * params.bass;
-            float cx = 0.5f * std::cos(th) - 0.25f * std::cos(2.0f * th);
-            float cy = 0.5f * std::sin(th) - 0.25f * std::sin(2.0f * th);
-            params.cx = cx * breath;
-            params.cy = cy * breath;
+            cardioidC(params.morphPhase, params.bass);
         } else if (params.mode == 2) {
             // el tunel avanza solo; el bass lo acelera (Fase 5)
             params.travel += (0.35f + 1.2f * params.bass + 0.5f * params.beat) * params.speed * dt;
             params.morphPhase += 0.05f * params.speed * dt;  // morph lento del c dentro del tunel
             params.cx = -0.745f + 0.06f * std::cos(params.morphPhase);
             params.cy =  0.148f + 0.05f * std::sin(params.morphPhase * 0.83f);
+        } else if (params.mode == 3) {
+            // viaje: crucero con morph, inmersion suave a un punto del conjunto, y vuelta
+            dive.t += dt;
+            float rate = 0.55f * params.speed * (0.75f + 0.5f * params.bass);
+            if (dive.stage == 0) {          // crucero
+                params.morphPhase += (0.06f + 0.15f * params.mid) * params.speed * dt;
+                cardioidC(params.morphPhase, params.bass);
+                params.zoom += (0.8f - params.zoom) * (1.0f - std::exp(-1.5f * dt));
+                params.offx *= std::exp(-0.3f * dt);   // volver el encuadre al centro
+                params.offy *= std::exp(-0.3f * dt);
+                if (dive.t > dive.cruiseDur) {
+                    pickDiveTarget();       // c queda CONGELADO durante la inmersion
+                    dive.stage = 1; dive.t = 0.0f;
+                }
+            } else if (dive.stage == 1) {   // inmersion exponencial hacia el objetivo
+                params.zoom *= std::exp(rate * dt);
+                float k2 = 1.0f - std::exp(-1.6f * rate * dt);
+                params.offx += k2 * (dive.tx - params.offx);
+                params.offy += k2 * (dive.ty - params.offy);
+                if (params.zoom > 2.0e4f) { dive.stage = 2; dive.t = 0.0f; }  // limite de precision float
+            } else if (dive.stage == 2) {   // pausa en el fondo
+                if (dive.t > 2.5f) { dive.stage = 3; dive.t = 0.0f; }
+            } else {                        // regreso (mas rapido que la ida)
+                params.zoom *= std::exp(-1.7f * rate * dt);
+                if (params.zoom < 0.85f) {
+                    static std::mt19937 rng{std::random_device{}()};
+                    dive.cruiseDur = 5.0f + static_cast<float>(rng() % 80) * 0.1f;  // 5-13 s
+                    dive.stage = 0; dive.t = 0.0f;
+                }
+            }
         }
 
         int w, h;
@@ -276,7 +340,10 @@ int main() {
         glUniform2f(uC, params.cx, params.cy);
         glUniform1f(uZoom, params.zoom);
         glUniform2f(uOff, params.offx, params.offy);
-        glUniform1i(uIter, params.iterations);
+        int effIter = params.iterations;
+        if (params.zoom > 1.0f)
+            effIter = std::min(800, params.iterations + static_cast<int>(40.0f * std::log(params.zoom)));
+        glUniform1i(uIter, effIter);
         glUniform1f(uHue, params.hueShift);
         glUniform1f(uBeat, params.beat);
         glUniform1i(uMode, params.mode);
@@ -292,7 +359,8 @@ int main() {
         ++frames;
         if (now - fpsT >= 1.0) {
             char title[128];
-            const char* modeName = params.mode == 0 ? "manual" : params.mode == 1 ? "morph" : "tunel";
+            const char* modeName = params.mode == 0 ? "manual" : params.mode == 1 ? "morph"
+                                 : params.mode == 2 ? "tunel" : "viaje";
             std::snprintf(title, sizeof title,
                           "flx4-render | %d fps | %s x%.1f | iter=%d zoom=%.2f c=(%.3f,%.3f)",
                           frames, modeName, params.speed, params.iterations, params.zoom,

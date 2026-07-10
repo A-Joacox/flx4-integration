@@ -40,6 +40,7 @@ PAD_ACTIONS = {
     "pad_2_deck1_hot_cue_mode_press_set_hotcue": ("/ctl/mode", 1.0),  # morph
     "pad_3_deck1_hot_cue_mode_press_set_hotcue": ("/ctl/mode", 2.0),  # tunel
     "pad_4_deck1_hot_cue_mode_press_set_hotcue": ("/ctl/reset", 1.0),
+    "pad_5_deck1_hot_cue_mode_press_set_hotcue": ("/ctl/mode", 3.0),  # viaje
 }
 
 
