@@ -51,6 +51,7 @@ def main():
     stats = {"audio": 0, "midi": 0}
 
     analyzer = None
+    silent = {"chunks": 0, "warned": False}
     if not args.no_audio:
         def on_frame(f):
             client.send_message("/audio/bass", float(f.bass))
@@ -59,6 +60,17 @@ def main():
             if f.beat:
                 client.send_message("/audio/beat", 1.0)
             stats["audio"] += 1
+            # diagnostico: señal muerta aunque haya musica sonando
+            if f.rms < 1e-5:
+                silent["chunks"] += 1
+                if silent["chunks"] > 140 and not silent["warned"]:  # ~3 seg
+                    silent["warned"] = True
+                    print("\n[bridge] AVISO: el loopback recibe SILENCIO hace 3s.")
+                    print("         Si hay musica sonando, revisa que los parlantes de Windows")
+                    print("         no esten muteados ni al 0% (el loopback captura ese volumen).")
+            else:
+                silent["chunks"] = 0
+                silent["warned"] = False
         analyzer = AudioAnalyzer(on_frame=on_frame)
         analyzer.start()
 

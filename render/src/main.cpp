@@ -239,7 +239,8 @@ int main() {
             // "breath" respira apenas hacia afuera/adentro del borde para variar densidad.
             params.morphPhase += (0.08f + 0.20f * params.mid) * params.speed * dt;
             float th = params.morphPhase;
-            float breath = 1.0f + 0.015f * std::sin(th * 0.31f) + 0.01f * params.bass;
+            // siempre apenas AFUERA del borde: adentro el Julia se llena de negro
+            float breath = 1.012f + 0.008f * std::sin(th * 0.31f) + 0.008f * params.bass;
             float cx = 0.5f * std::cos(th) - 0.25f * std::cos(2.0f * th);
             float cy = 0.5f * std::sin(th) - 0.25f * std::sin(2.0f * th);
             params.cx = cx * breath;
