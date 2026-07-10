@@ -93,6 +93,7 @@ Aplicación híbrida (Python + C++) que se conecta al controlador MIDI Numark/De
 
 ## Fase 6 — Polish y presets (3-4 días)
 
+- [x] Ejecutable único: el exe embebe el shader y lanza/termina el bridge automáticamente
 - [ ] Presets en JSON (mapeos, paletas, tipo de fractal)
 - [ ] Transiciones suaves entre presets
 - [ ] Grabación a video vía 

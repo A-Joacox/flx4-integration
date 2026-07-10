@@ -11,14 +11,19 @@
 //
 // El titulo de la ventana muestra los FPS (verificar 60 estables a 1080p).
 //
-// Fase 4: escucha OSC en 127.0.0.1:9000 (correr bridge/bridge.py en paralelo).
+// Fase 4: escucha OSC en 127.0.0.1:9000.
 //   /audio/bass|mid|treble -> reactividad, /audio/beat -> flash
-//   /ctl/zoom /ctl/speed /ctl/hue -> knobs del FLX4
+//   /ctl/zoom /ctl/speed /ctl/hue /ctl/mode /ctl/reset -> FLX4
+//
+// Fase 6: lanzador unico. El exe lanza bridge/bridge.py automaticamente (pythonw
+// del .venv, en un job object: si el render muere, el bridge muere). Flag
+// --no-bridge para correr el bridge a mano (util para ver sus logs).
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include "osc_receiver.h"
+#include "julia_frag.h"   // shader embebido (generado por CMake)
 
 #include <cmath>
 #include <cstdio>
@@ -92,6 +97,58 @@ void main() {
 )";
 
 Params params;
+
+// ---- lanzador automatico del bridge Python (Fase 6: ejecutable unico) ----
+#ifdef _WIN32
+PROCESS_INFORMATION gBridgeProc{};
+HANDLE gBridgeJob = nullptr;
+
+bool fileExists(const std::string& path) {
+    return GetFileAttributesA(path.c_str()) != INVALID_FILE_ATTRIBUTES;
+}
+
+void launchBridge() {
+    const char* prefixes[] = {"", "../", "../../", "../../../", "../../../../"};
+    for (const char* pre : prefixes) {
+        std::string script = std::string(pre) + "bridge\\bridge.py";
+        if (!fileExists(script)) continue;
+        std::string venvPy = std::string(pre) + ".venv\\Scripts\\pythonw.exe";
+        std::string py = fileExists(venvPy) ? venvPy : std::string("pythonw.exe");
+        std::string cmd = "\"" + py + "\" \"" + script + "\"";
+        std::string cmdBuf = cmd;  // CreateProcess necesita buffer modificable
+        STARTUPINFOA si{};
+        si.cb = sizeof si;
+        if (CreateProcessA(nullptr, cmdBuf.data(), nullptr, nullptr, FALSE,
+                           CREATE_NO_WINDOW, nullptr, nullptr, &si, &gBridgeProc)) {
+            gBridgeJob = CreateJobObjectA(nullptr, nullptr);
+            if (gBridgeJob) {
+                JOBOBJECT_EXTENDED_LIMIT_INFORMATION jeli{};
+                jeli.BasicLimitInformation.LimitFlags = JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE;
+                SetInformationJobObject(gBridgeJob, JobObjectExtendedLimitInformation, &jeli, sizeof jeli);
+                AssignProcessToJobObject(gBridgeJob, gBridgeProc.hProcess);
+            }
+            std::printf("bridge lanzado: %s\n", cmd.c_str());
+        } else {
+            std::fprintf(stderr, "aviso: fallo al lanzar el bridge (%s)\n", cmd.c_str());
+        }
+        return;
+    }
+    std::fprintf(stderr, "aviso: no encontre bridge/bridge.py; corriendo sin audio/MIDI\n");
+}
+
+void stopBridge() {
+    if (gBridgeProc.hProcess) {
+        TerminateProcess(gBridgeProc.hProcess, 0);
+        CloseHandle(gBridgeProc.hThread);
+        CloseHandle(gBridgeProc.hProcess);
+        gBridgeProc = PROCESS_INFORMATION{};
+    }
+    if (gBridgeJob) { CloseHandle(gBridgeJob); gBridgeJob = nullptr; }
+}
+#else
+void launchBridge() {}
+void stopBridge() {}
+#endif
 
 // ---- modo viaje: crucero -> encuadre -> inmersion vertical -> pausa -> regreso ----
 struct DiveAuto {
@@ -179,7 +236,11 @@ void keyCallback(GLFWwindow* win, int key, int, int action, int) {
 
 } // namespace
 
-int main() {
+int main(int argc, char** argv) {
+    bool noBridge = false;
+    for (int i = 1; i < argc; ++i)
+        if (!std::strcmp(argv[i], "--no-bridge")) noBridge = true;
+
     if (!glfwInit()) {
         std::fprintf(stderr, "glfwInit fallo\n");
         return 1;
@@ -207,9 +268,8 @@ int main() {
 
     std::string fragSrc = findShaderSource("julia.frag");
     if (fragSrc.empty()) {
-        std::fprintf(stderr, "no se encontro shaders/julia.frag (correr desde la raiz del repo o render/)\n");
-        glfwTerminate();
-        return 1;
+        fragSrc = kEmbeddedJuliaFrag;  // fallback: shader embebido al compilar
+        std::printf("shader: embebido en el ejecutable\n");
     }
 
     GLuint vs = compile(GL_VERTEX_SHADER, kVertexSrc);
@@ -250,6 +310,8 @@ int main() {
     const GLint uBass = glGetUniformLocation(prog, "uBass");
     const GLint uMid  = glGetUniformLocation(prog, "uMid");
     const GLint uTreb = glGetUniformLocation(prog, "uTreble");
+
+    if (!noBridge) launchBridge();
 
     OscReceiver osc;
     if (osc.init(9000)) {
@@ -391,6 +453,7 @@ int main() {
         }
     }
 
+    stopBridge();
     glfwDestroyWindow(window);
     glfwTerminate();
     return 0;

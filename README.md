@@ -4,6 +4,17 @@ Visualizador de fractales audiorreactivo controlado por Numark/Denon FLX4. Pytho
 
 Plan completo en [PLAN.md](PLAN.md).
 
+## Correr (un solo ejecutable)
+
+```powershell
+.\render\build\Release\flx4_render.exe
+```
+
+El exe lanza `bridge/bridge.py` automaticamente (pythonw del `.venv`) y lo mata al salir.
+Requisitos: rekordbox sonando con PC MASTER OUT, FLX4 conectado, volumen de parlantes > 0.
+Para ver los logs del bridge: `flx4_render.exe --no-bridge` + `python bridge\bridge.py` en otra terminal.
+Modos (teclas 1-6 o pads hot-cue deck 1): manual, morph, tunel, viaje, caleidoscopio, neon. Pad 4 = reset.
+
 ## Setup rápido (Windows 11)
 
 ### Python
