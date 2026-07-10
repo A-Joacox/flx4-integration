@@ -2,11 +2,12 @@
 // Los mismos uniforms se conectan al bridge OSC en Fase 4.
 //
 // Controles:
+//   1 / 2 / 3    : modo manual / morph (c orbita solo) / tunel infinito
 //   Flechas      : mover offset          | W / S      : zoom in / out
-//   A / D        : c.x -/+               | Z / C      : c.y -/+
-//   Q / E        : iteraciones -/+       | H / J      : hue shift -/+
-//   ESPACIO      : "beat" manual (flash) | R          : reset
-//   ESC          : salir
+//   A / D        : c.x -/+ (o velocidad de morph/tunel en modos 1-2)
+//   Z / C        : c.y -/+               | Q / E      : iteraciones -/+
+//   H / J        : hue shift -/+         | ESPACIO    : "beat" manual (flash)
+//   R            : reset                 | ESC        : salir
 //
 // El titulo de la ventana muestra los FPS (verificar 60 estables a 1080p).
 
@@ -27,7 +28,13 @@ struct Params {
     float offx = 0.0f, offy = 0.0f;
     int   iterations = 200;
     float hueShift = 0.0f;
-    float beat = 0.0f;  // 1.0 al disparar, decae por frame
+    float beat = 0.0f;      // 1.0 al disparar, decae por frame
+    int   mode = 1;         // 0 manual, 1 morph, 2 tunel (arranca en morph)
+    float speed = 1.0f;     // multiplicador de autopilot (A/D en modos 1-2)
+    float morphPhase = 0.0f;
+    float travel = 0.0f;    // profundidad acumulada del tunel
+    // audio (0 hasta Fase 4; el bridge OSC los va a llenar)
+    float bass = 0.0f, mid = 0.0f, treble = 0.0f;
 };
 
 std::string loadFile(const char* path) {
@@ -87,8 +94,13 @@ void handleKeys(GLFWwindow* win, float dt) {
     if (down(GLFW_KEY_UP))    params.offy += panSpeed;
     if (down(GLFW_KEY_W)) params.zoom *= 1.0f + zoomSpeed;
     if (down(GLFW_KEY_S)) params.zoom /= 1.0f + zoomSpeed;
-    if (down(GLFW_KEY_A)) params.cx -= 0.2f * dt;
-    if (down(GLFW_KEY_D)) params.cx += 0.2f * dt;
+    if (params.mode == 0) {
+        if (down(GLFW_KEY_A)) params.cx -= 0.2f * dt;
+        if (down(GLFW_KEY_D)) params.cx += 0.2f * dt;
+    } else {
+        if (down(GLFW_KEY_A)) params.speed = std::fmax(0.05f, params.speed - 1.0f * dt);
+        if (down(GLFW_KEY_D)) params.speed = std::fmin(4.0f, params.speed + 1.0f * dt);
+    }
     if (down(GLFW_KEY_Z)) params.cy -= 0.2f * dt;
     if (down(GLFW_KEY_C)) params.cy += 0.2f * dt;
     if (down(GLFW_KEY_H)) params.hueShift -= 0.3f * dt;
@@ -103,6 +115,9 @@ void keyCallback(GLFWwindow* win, int key, int, int action, int) {
         case GLFW_KEY_Q:      params.iterations = params.iterations > 40 ? params.iterations - 20 : 20; break;
         case GLFW_KEY_E:      params.iterations = params.iterations < 980 ? params.iterations + 20 : 1000; break;
         case GLFW_KEY_R:      params = Params{}; break;
+        case GLFW_KEY_1:      params.mode = 0; break;
+        case GLFW_KEY_2:      params.mode = 1; break;
+        case GLFW_KEY_3:      params.mode = 2; break;
         default: break;
     }
 }
@@ -175,6 +190,11 @@ int main() {
     const GLint uIter = glGetUniformLocation(prog, "uIterations");
     const GLint uHue  = glGetUniformLocation(prog, "uHueShift");
     const GLint uBeat = glGetUniformLocation(prog, "uBeat");
+    const GLint uMode = glGetUniformLocation(prog, "uMode");
+    const GLint uTrav = glGetUniformLocation(prog, "uTravel");
+    const GLint uBass = glGetUniformLocation(prog, "uBass");
+    const GLint uMid  = glGetUniformLocation(prog, "uMid");
+    const GLint uTreb = glGetUniformLocation(prog, "uTreble");
 
     double lastT = glfwGetTime();
     double fpsT = lastT;
@@ -188,6 +208,21 @@ int main() {
         handleKeys(window, dt);
         params.beat = std::fmax(0.0f, params.beat - 3.0f * dt);  // decae en ~0.33s
 
+        // autopilot: la musica va a modular esto mismo en Fase 4/5
+        if (params.mode == 1) {
+            // c orbita cerca del borde del conjunto de Mandelbrot -> morph continuo
+            params.morphPhase += (0.10f + 0.25f * params.mid) * params.speed * dt;
+            float wobble = 0.16f + 0.10f * std::sin(params.morphPhase * 0.37f);
+            params.cx = -0.62f + wobble * std::cos(params.morphPhase);
+            params.cy =  0.42f + wobble * std::sin(params.morphPhase * 1.13f);
+        } else if (params.mode == 2) {
+            // el tunel avanza solo; el bass lo acelera (Fase 5)
+            params.travel += (0.35f + 1.2f * params.bass + 0.5f * params.beat) * params.speed * dt;
+            params.morphPhase += 0.05f * params.speed * dt;  // morph lento del c dentro del tunel
+            params.cx = -0.745f + 0.06f * std::cos(params.morphPhase);
+            params.cy =  0.148f + 0.05f * std::sin(params.morphPhase * 0.83f);
+        }
+
         int w, h;
         glfwGetFramebufferSize(window, &w, &h);
         glViewport(0, 0, w, h);
@@ -200,6 +235,11 @@ int main() {
         glUniform1i(uIter, params.iterations);
         glUniform1f(uHue, params.hueShift);
         glUniform1f(uBeat, params.beat);
+        glUniform1i(uMode, params.mode);
+        glUniform1f(uTrav, params.travel);
+        glUniform1f(uBass, params.bass);
+        glUniform1f(uMid, params.mid);
+        glUniform1f(uTreb, params.treble);
 
         glDrawArrays(GL_TRIANGLES, 0, 3);
         glfwSwapBuffers(window);
@@ -208,9 +248,11 @@ int main() {
         ++frames;
         if (now - fpsT >= 1.0) {
             char title[128];
+            const char* modeName = params.mode == 0 ? "manual" : params.mode == 1 ? "morph" : "tunel";
             std::snprintf(title, sizeof title,
-                          "flx4-render | %d fps | iter=%d zoom=%.2f c=(%.3f,%.3f)",
-                          frames, params.iterations, params.zoom, params.cx, params.cy);
+                          "flx4-render | %d fps | %s x%.1f | iter=%d zoom=%.2f c=(%.3f,%.3f)",
+                          frames, modeName, params.speed, params.iterations, params.zoom,
+                          params.cx, params.cy);
             glfwSetWindowTitle(window, title);
             frames = 0;
             fpsT = now;
