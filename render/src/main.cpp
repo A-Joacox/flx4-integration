@@ -42,6 +42,8 @@ struct Params {
     float travel = 0.0f;    // profundidad acumulada del tunel
     // audio (0 hasta Fase 4; el bridge OSC los va a llenar)
     float bass = 0.0f, mid = 0.0f, treble = 0.0f;
+    // targets OSC: el loop hace lerp hacia estos (evita saltos bruscos del MIDI)
+    float zoomTarget = 0.8f, speedTarget = 1.0f, hueTarget = 0.0f;
 };
 
 std::string loadFile(const char* path) {
@@ -99,19 +101,19 @@ void handleKeys(GLFWwindow* win, float dt) {
     if (down(GLFW_KEY_RIGHT)) params.offx += panSpeed;
     if (down(GLFW_KEY_DOWN))  params.offy -= panSpeed;
     if (down(GLFW_KEY_UP))    params.offy += panSpeed;
-    if (down(GLFW_KEY_W)) params.zoom *= 1.0f + zoomSpeed;
-    if (down(GLFW_KEY_S)) params.zoom /= 1.0f + zoomSpeed;
+    if (down(GLFW_KEY_W)) params.zoomTarget *= 1.0f + zoomSpeed;
+    if (down(GLFW_KEY_S)) params.zoomTarget /= 1.0f + zoomSpeed;
     if (params.mode == 0) {
         if (down(GLFW_KEY_A)) params.cx -= 0.2f * dt;
         if (down(GLFW_KEY_D)) params.cx += 0.2f * dt;
     } else {
-        if (down(GLFW_KEY_A)) params.speed = std::fmax(0.05f, params.speed - 1.0f * dt);
-        if (down(GLFW_KEY_D)) params.speed = std::fmin(4.0f, params.speed + 1.0f * dt);
+        if (down(GLFW_KEY_A)) params.speedTarget = std::fmax(0.05f, params.speedTarget - 1.0f * dt);
+        if (down(GLFW_KEY_D)) params.speedTarget = std::fmin(4.0f, params.speedTarget + 1.0f * dt);
     }
     if (down(GLFW_KEY_Z)) params.cy -= 0.2f * dt;
     if (down(GLFW_KEY_C)) params.cy += 0.2f * dt;
-    if (down(GLFW_KEY_H)) params.hueShift -= 0.3f * dt;
-    if (down(GLFW_KEY_J)) params.hueShift += 0.3f * dt;
+    if (down(GLFW_KEY_H)) params.hueTarget -= 0.3f * dt;
+    if (down(GLFW_KEY_J)) params.hueTarget += 0.3f * dt;
 }
 
 void keyCallback(GLFWwindow* win, int key, int, int action, int) {
@@ -227,10 +229,22 @@ int main() {
             else if (!std::strcmp(addr, "/audio/mid"))    params.mid = v;
             else if (!std::strcmp(addr, "/audio/treble")) params.treble = v;
             else if (!std::strcmp(addr, "/audio/beat"))   params.beat = 1.0f;
-            else if (!std::strcmp(addr, "/ctl/zoom"))     params.zoom = 0.4f * std::pow(7.5f, v);
-            else if (!std::strcmp(addr, "/ctl/speed"))    params.speed = 0.05f + 3.95f * v;
-            else if (!std::strcmp(addr, "/ctl/hue"))      params.hueShift = v;
+            else if (!std::strcmp(addr, "/ctl/zoom"))     params.zoomTarget = 0.4f * std::pow(7.5f, v);
+            else if (!std::strcmp(addr, "/ctl/speed"))    params.speedTarget = 0.05f + 3.95f * v;
+            else if (!std::strcmp(addr, "/ctl/hue"))      params.hueTarget = v;
+            else if (!std::strcmp(addr, "/ctl/mode"))     params.mode = static_cast<int>(v + 0.5f);
+            else if (!std::strcmp(addr, "/ctl/reset")) {
+                float b = params.bass, m = params.mid, tr = params.treble;
+                params = Params{};
+                params.bass = b; params.mid = m; params.treble = tr;
+            }
         });
+
+        // suavizado exponencial hacia los targets OSC (~8 Hz de respuesta)
+        float k = 1.0f - std::exp(-8.0f * dt);
+        params.zoom     += k * (params.zoomTarget - params.zoom);
+        params.speed    += k * (params.speedTarget - params.speed);
+        params.hueShift += k * (params.hueTarget - params.hueShift);
 
         // autopilot: la musica va a modular esto mismo en Fase 4/5
         if (params.mode == 1) {

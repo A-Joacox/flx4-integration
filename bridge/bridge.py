@@ -34,6 +34,14 @@ SEMANTIC = {
     "filter_ch2_rotate_filter_effect_knob": "/ctl/hue",
 }
 
+# pads (solo al presionar, value==1.0) -> mensajes discretos
+PAD_ACTIONS = {
+    "pad_1_deck1_hot_cue_mode_press_set_hotcue": ("/ctl/mode", 0.0),  # manual
+    "pad_2_deck1_hot_cue_mode_press_set_hotcue": ("/ctl/mode", 1.0),  # morph
+    "pad_3_deck1_hot_cue_mode_press_set_hotcue": ("/ctl/mode", 2.0),  # tunel
+    "pad_4_deck1_hot_cue_mode_press_set_hotcue": ("/ctl/reset", 1.0),
+}
+
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -77,6 +85,14 @@ def main():
     listener = None
     if not args.no_midi:
         def on_control(name, value, entry):
+            pad = PAD_ACTIONS.get(name)
+            if pad is not None:
+                if value >= 0.5:  # solo el press, no el release
+                    client.send_message(pad[0], pad[1])
+                    stats["midi"] += 1
+                    if args.verbose:
+                        print(f"  {pad[0]} {pad[1]}")
+                return
             addr = SEMANTIC.get(name, f"/midi/{name}")
             client.send_message(addr, float(value))
             stats["midi"] += 1

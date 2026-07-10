@@ -85,10 +85,10 @@ Aplicación híbrida (Python + C++) que se conecta al controlador MIDI Numark/De
 
 ## Fase 5 — Reactividad completa (4-5 días)
 
-- [ ] bass → zoom/escala, mid → color (HSV shift), treble → distorsión/ruido
-- [ ] Beat → flash o cambio de paleta
-- [ ] Pads/jog wheels → cambio de fractal o presets
-- [ ] Suavizado (lerp/easing) de todos los valores
+- [x] bass → zoom/escala, mid → color (HSV shift), treble → distorsión/ruido
+- [x] Beat → flash o cambio de paleta
+- [x] Pads/jog wheels → cambio de fractal o presets
+- [x] Suavizado (lerp/easing) de todos los valores
 - **Entregable**: sistema completo reaccionando en vivo
 
 ## Fase 6 — Polish y presets (3-4 días)
