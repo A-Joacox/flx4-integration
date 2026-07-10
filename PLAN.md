@@ -78,9 +78,9 @@ Aplicación híbrida (Python + C++) que se conecta al controlador MIDI Numark/De
 
 ## Fase 4 — Puente Python ↔ C++ (2-3 días)
 
-- [ ] Servidor OSC en Python: bandas de audio, beat flag, valores MIDI normalizados
-- [ ] Cliente OSC en C++ (`oscpack` vía vcpkg)
-- [ ] Loop C++: recibir OSC no bloqueante cada frame, actualizar uniforms
+- [x] Servidor OSC en Python: bandas de audio, beat flag, valores MIDI normalizados
+- [x] Cliente OSC en C++ (receptor propio `osc_receiver.h`, sin oscpack)
+- [x] Loop C++: recibir OSC no bloqueante cada frame, actualizar uniforms
 - **Entregable**: knob del FLX4 cambia el zoom del fractal en tiempo real
 
 ## Fase 5 — Reactividad completa (4-5 días)

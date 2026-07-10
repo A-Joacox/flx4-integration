@@ -10,12 +10,19 @@
 //   R            : reset                 | ESC        : salir
 //
 // El titulo de la ventana muestra los FPS (verificar 60 estables a 1080p).
+//
+// Fase 4: escucha OSC en 127.0.0.1:9000 (correr bridge/bridge.py en paralelo).
+//   /audio/bass|mid|treble -> reactividad, /audio/beat -> flash
+//   /ctl/zoom /ctl/speed /ctl/hue -> knobs del FLX4
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "osc_receiver.h"
+
 #include <cmath>
 #include <cstdio>
+#include <cstring>
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -196,6 +203,13 @@ int main() {
     const GLint uMid  = glGetUniformLocation(prog, "uMid");
     const GLint uTreb = glGetUniformLocation(prog, "uTreble");
 
+    OscReceiver osc;
+    if (osc.init(9000)) {
+        std::printf("OSC escuchando en 127.0.0.1:9000\n");
+    } else {
+        std::fprintf(stderr, "aviso: no se pudo abrir OSC :9000 (sigue sin audio/MIDI)\n");
+    }
+
     double lastT = glfwGetTime();
     double fpsT = lastT;
     int frames = 0;
@@ -207,6 +221,16 @@ int main() {
 
         handleKeys(window, dt);
         params.beat = std::fmax(0.0f, params.beat - 3.0f * dt);  // decae en ~0.33s
+
+        osc.poll([](const char* addr, float v) {
+            if      (!std::strcmp(addr, "/audio/bass"))   params.bass = v;
+            else if (!std::strcmp(addr, "/audio/mid"))    params.mid = v;
+            else if (!std::strcmp(addr, "/audio/treble")) params.treble = v;
+            else if (!std::strcmp(addr, "/audio/beat"))   params.beat = 1.0f;
+            else if (!std::strcmp(addr, "/ctl/zoom"))     params.zoom = 0.4f * std::pow(7.5f, v);
+            else if (!std::strcmp(addr, "/ctl/speed"))    params.speed = 0.05f + 3.95f * v;
+            else if (!std::strcmp(addr, "/ctl/hue"))      params.hueShift = v;
+        });
 
         // autopilot: la musica va a modular esto mismo en Fase 4/5
         if (params.mode == 1) {

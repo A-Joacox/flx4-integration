@@ -10,5 +10,6 @@ find_package(glm CONFIG REQUIRED)
 
 add_executable(flx4_render src/main.cpp)
 target_link_libraries(flx4_render PRIVATE glfw glad::glad glm::glm)
-
-# Fase 4: agregar oscpack a vcpkg.json y linkear aquí
+if(WIN32)
+    target_link_libraries(flx4_render PRIVATE ws2_32)  # receptor OSC (osc_receiver.h)
+endif()
