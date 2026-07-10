@@ -9,6 +9,12 @@
 #include <string>
 
 #ifdef _WIN32
+  #ifndef NOMINMAX
+    #define NOMINMAX          // windows.h define macros min/max que rompen std::min
+  #endif
+  #ifndef WIN32_LEAN_AND_MEAN
+    #define WIN32_LEAN_AND_MEAN
+  #endif
   #include <winsock2.h>
   #include <ws2tcpip.h>
   using socket_t = SOCKET;
