@@ -93,23 +93,31 @@ void main() {
 
 Params params;
 
-// ---- modo viaje: crucero -> inmersion a un punto del conjunto -> regreso ----
+// ---- modo viaje: crucero -> encuadre -> inmersion vertical -> pausa -> regreso ----
 struct DiveAuto {
-    int stage = 0;          // 0 crucero, 1 inmersion, 2 pausa, 3 regreso
+    int stage = 0;          // 0 crucero, 1 encuadre, 2 inmersion, 3 pausa, 4 regreso
     float t = 0.0f;
     float cruiseDur = 6.0f;
-    float tx = 0.0f, ty = 0.0f;  // punto objetivo (sobre el conjunto de Julia)
+    float tx = 0.0f, ty = 0.0f;   // punto objetivo (sobre el conjunto de Julia)
+    float c0x = 0.0f, c0y = 0.0f; // c al empezar el encuadre (breath del crucero)
+    float c1x = 0.0f, c1y = 0.0f; // c destino: EXACTO sobre el borde -> Julia conectado
 };
 DiveAuto dive;
 
+void cardioidPoint(float th, float breath, float* cx, float* cy) {
+    // c = u/2 - u^2/4 sobre la cardioide de Mandelbrot, escalado por breath
+    *cx = (0.5f * std::cos(th) - 0.25f * std::cos(2.0f * th)) * breath;
+    *cy = (0.5f * std::sin(th) - 0.25f * std::sin(2.0f * th)) * breath;
+}
+
 // iteracion inversa z -> +-sqrt(z - c): converge a un punto DEL conjunto de Julia,
 // o sea siempre una zona con detalle infinito. Signos al azar -> punto distinto cada vez.
-void pickDiveTarget() {
+void pickDiveTarget(float cx, float cy) {
     static std::mt19937 rng{std::random_device{}()};
     std::uniform_int_distribution<int> coin(0, 1);
     float zx = 0.3f, zy = 0.2f;
     for (int i = 0; i < 48; ++i) {
-        float wx = zx - params.cx, wy = zy - params.cy;
+        float wx = zx - cx, wy = zy - cy;
         float r = std::sqrt(wx * wx + wy * wy);
         float sx = std::sqrt(std::fmax(0.0f, (r + wx) * 0.5f));
         float sy = std::sqrt(std::fmax(0.0f, (r - wx) * 0.5f));
@@ -122,10 +130,9 @@ void pickDiveTarget() {
 }
 
 void cardioidC(float th, float bass) {
-    // c = u/2 - u^2/4 sobre el borde de la cardioide, apenas afuera
+    // crucero: siempre apenas AFUERA del borde (adentro el Julia se llena de negro)
     float breath = 1.012f + 0.008f * std::sin(th * 0.31f) + 0.008f * bass;
-    params.cx = (0.5f * std::cos(th) - 0.25f * std::cos(2.0f * th)) * breath;
-    params.cy = (0.5f * std::sin(th) - 0.25f * std::sin(2.0f * th)) * breath;
+    cardioidPoint(th, breath, &params.cx, &params.cy);
 }
 
 void handleKeys(GLFWwindow* win, float dt) {
@@ -302,29 +309,40 @@ int main() {
             params.cx = -0.745f + 0.06f * std::cos(params.morphPhase);
             params.cy =  0.148f + 0.05f * std::sin(params.morphPhase * 0.83f);
         } else if (params.mode == 3) {
-            // viaje: crucero con morph, inmersion suave a un punto del conjunto, y vuelta
+            // viaje: crucero -> encuadre (pan con zoom bajo) -> inmersion VERTICAL
+            // (solo zoom, sin pan: ni deriva lateral ni vibracion) -> pausa -> regreso
             dive.t += dt;
-            float rate = 0.55f * params.speed * (0.75f + 0.5f * params.bass);
-            if (dive.stage == 0) {          // crucero
+            float rate = 0.50f * params.speed * (0.90f + 0.15f * params.bass);
+            if (dive.stage == 0) {          // crucero con morph
                 params.morphPhase += (0.06f + 0.15f * params.mid) * params.speed * dt;
                 cardioidC(params.morphPhase, params.bass);
                 params.zoom += (0.8f - params.zoom) * (1.0f - std::exp(-1.5f * dt));
-                params.offx *= std::exp(-0.3f * dt);   // volver el encuadre al centro
+                params.offx *= std::exp(-0.3f * dt);
                 params.offy *= std::exp(-0.3f * dt);
                 if (dive.t > dive.cruiseDur) {
-                    pickDiveTarget();       // c queda CONGELADO durante la inmersion
+                    // destino: c EXACTO sobre el borde -> Julia conectado, filamentos
+                    // en todas partes (el polvo de afuera deja huecos vacios al fondo)
+                    dive.c0x = params.cx; dive.c0y = params.cy;
+                    cardioidPoint(params.morphPhase, 1.0f, &dive.c1x, &dive.c1y);
+                    pickDiveTarget(dive.c1x, dive.c1y);
                     dive.stage = 1; dive.t = 0.0f;
                 }
-            } else if (dive.stage == 1) {   // inmersion exponencial hacia el objetivo
+            } else if (dive.stage == 1) {   // encuadre: panear al objetivo con zoom bajo
+                float s = std::fmin(1.0f, dive.t / 1.5f);
+                float e = s * s * (3.0f - 2.0f * s);  // smoothstep
+                params.cx = dive.c0x + e * (dive.c1x - dive.c0x);
+                params.cy = dive.c0y + e * (dive.c1y - dive.c0y);
+                float kp = 1.0f - std::exp(-3.0f * dt);
+                params.offx += kp * (dive.tx - params.offx);
+                params.offy += kp * (dive.ty - params.offy);
+                if (s >= 1.0f) { dive.stage = 2; dive.t = 0.0f; }
+            } else if (dive.stage == 2) {   // inmersion vertical: c y offset congelados
                 params.zoom *= std::exp(rate * dt);
-                float k2 = 1.0f - std::exp(-1.6f * rate * dt);
-                params.offx += k2 * (dive.tx - params.offx);
-                params.offy += k2 * (dive.ty - params.offy);
-                if (params.zoom > 2.5e3f) { dive.stage = 2; dive.t = 0.0f; }  // profundidad con estructura visible
-            } else if (dive.stage == 2) {   // pausa en el fondo
-                if (dive.t > 1.8f) { dive.stage = 3; dive.t = 0.0f; }
-            } else {                        // regreso (mas rapido que la ida)
-                params.zoom *= std::exp(-1.7f * rate * dt);
+                if (params.zoom > 2.5e3f) { dive.stage = 3; dive.t = 0.0f; }
+            } else if (dive.stage == 3) {   // pausa en el fondo
+                if (dive.t > 1.8f) { dive.stage = 4; dive.t = 0.0f; }
+            } else {                        // regreso vertical
+                params.zoom *= std::exp(-1.6f * rate * dt);
                 if (params.zoom < 0.85f) {
                     static std::mt19937 rng{std::random_device{}()};
                     dive.cruiseDur = 5.0f + static_cast<float>(rng() % 80) * 0.1f;  // 5-13 s
